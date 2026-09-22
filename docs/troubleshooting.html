@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CyberWatch Troubleshooting Guide — Fix SMTP errors, email delivery issues, lock/unlock detection problems, and startup failures." />
+  <title>Troubleshooting — CyberWatch Docs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%233b82f6'/><path d='M16 6 L24 10 L24 18 C24 22 20 25.5 16 27 C12 25.5 8 22 8 18 L8 10 Z' fill='white' opacity='0.9'/><circle cx='16' cy='18' r='3' fill='%233b82f6'/></svg>" />
+</head>
+<body>
+<header id="navbar" role="banner">
+  <div class="nav-shell">
+
+    <!-- LEFT: Logo -->
+    <a href="../index.html" class="nav-logo" aria-label="CyberWatch home">
+      <div class="nav-logo-mark" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+      </div>
+      <span class="nav-logo-text">CyberWatch</span>
+      <span class="nav-logo-tag">v1.0</span>
+    </a>
+
+    <!-- CENTER: Pill navigation -->
+    <nav class="nav-pill" aria-label="Main navigation">
+      <ul class="nav-pill-links" role="list">
+        <li><a href="../index.html#features"      class="nav-pill-link" data-label="Features">Features</a></li>
+        <li><a href="../index.html#how-it-works"  class="nav-pill-link" data-label="Architecture">How it works</a></li>
+        <li><a href="../index.html#security"      class="nav-pill-link" data-label="Privacy">Privacy</a></li>
+        <li><a href="../index.html#validation"    class="nav-pill-link" data-label="Tests">Testing</a></li>
+        <li><a href="index.html" class="nav-pill-link active" data-label="Docs">Docs</a></li>
+      </ul>
+    </nav>
+
+    <!-- RIGHT: Actions -->
+    <div class="nav-actions">
+
+      <a
+        href="../downloads/CyberWatch-Setup.exe"
+        class="nav-dl-btn"
+        download="CyberWatch-Setup.exe"
+        id="nav-download-btn"
+        data-download
+        aria-label="Download CyberWatch for Windows"
+      >
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        <span>Download</span>
+      </a>
+
+      <!-- Mobile menu button -->
+      <button
+        id="mobile-menu-btn"
+        class="nav-mobile-btn"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+  </div>
+</header>
+
+<!-- Mobile drawer -->
+<nav id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation" aria-hidden="true">
+  <a href="../index.html#features"      class="nav-pill-link">Features</a>
+  <a href="../index.html#how-it-works"  class="nav-pill-link">How it works</a>
+  <a href="../index.html#security"      class="nav-pill-link">Privacy</a>
+  <a href="../index.html#validation"    class="nav-pill-link">Testing</a>
+  <a href="../index.html#download"      class="nav-pill-link">Download</a>
+  <a href="index.html" class="nav-pill-link active">Documentation</a>
+  <div class="mobile-menu-ctas">
+    <a href="../downloads/CyberWatch-Setup.exe" download="CyberWatch-Setup.exe" class="nav-dl-btn" style="justify-content:center;padding:0.7rem 1.25rem;">Download CyberWatch</a>
+  </div>
+</nav>
+<main style="padding-top: var(--nav-height);">
+  <div class="container">
+    <div class="docs-layout">
+
+      <aside class="docs-sidebar" aria-label="Documentation navigation">
+        <div class="docs-sidebar-group">
+          <div class="docs-sidebar-group-title">Guides</div>
+          <a href="installation.html" class="docs-sidebar-link">Installation</a>
+          <a href="configuration.html" class="docs-sidebar-link">Configuration</a>
+          <a href="privacy.html" class="docs-sidebar-link">Privacy</a>
+          <a href="troubleshooting.html" class="docs-sidebar-link active" aria-current="page">Troubleshooting</a>
+          <a href="faq.html" class="docs-sidebar-link">FAQ</a>
+        </div>
+      </aside>
+
+      <article class="docs-content" aria-labelledby="page-title">
+
+        <h1 id="page-title">Troubleshooting</h1>
+        <p>Common issues and their solutions. Start by checking the log file for error messages:</p>
+        <ul>
+          <li><strong>Start Menu:</strong> Start → CyberWatch → View Logs</li>
+          <li><strong>Direct path:</strong> <code>%LOCALAPPDATA%\Programs\CyberWatch\logs\cyberwatch.log</code></li>
+        </ul>
+
+        <h2 id="no-emails">No Emails Received</h2>
+
+        <h3>1. Check your spam folder</h3>
+        <p>Gmail-to-Gmail alerts sometimes land in spam. Mark the email as "Not spam" to train your inbox filter.</p>
+
+        <h3>2. Verify your App Password</h3>
+        <p>The App Password must be exactly 16 characters (spaces are optional). Verify it hasn't been revoked in your Google Account security settings.</p>
+
+        <h3>3. Confirm 2-Step Verification is still enabled</h3>
+        <p>If you disabled 2FA on your Google account after creating the App Password, the App Password is automatically revoked. Re-enable 2FA and create a new App Password.</p>
+
+        <h3>4. Test SMTP connectivity manually</h3>
+        <p>Use the built-in test command:</p>
+        <pre><code>cd "%LOCALAPPDATA%\Programs\CyberWatch"
+cyberwatch_cli.exe test-email</code></pre>
+        <p>Check the output and the log file for specific SMTP error messages.</p>
+
+        <h3>5. Verify network access to smtp.gmail.com</h3>
+        <p>Some corporate or school networks block outbound SMTP. Try from a home network. Port 587 must be accessible.</p>
+
+        <h2 id="lock-unlock-not-detected">Lock / Unlock Not Detected</h2>
+
+        <h3>1. Ensure CyberWatch is running in your interactive session</h3>
+        <p>CyberWatch must run in the same Windows session as your logged-in user to receive WTS notifications. It must NOT be running as a SYSTEM-level Windows Service — it uses Task Scheduler with an "At Logon" trigger in your user context.</p>
+
+        <h3>2. Check Task Scheduler</h3>
+        <pre><code>schtasks /Query /TN CyberWatch_Agent /FO LIST</code></pre>
+        <p>Confirm the task is listed, enabled, and the "Run As User" is your user account (not SYSTEM).</p>
+
+        <h3>3. Start the task manually to test</h3>
+        <pre><code>schtasks /Run /TN CyberWatch_Agent</code></pre>
+        <p>Then lock and unlock your screen. Check the log file for LOCK and UNLOCK event entries.</p>
+
+        <h3>4. Antivirus interference</h3>
+        <p>Some antivirus products may block applications from registering WTS notification listeners. Add the CyberWatch installation folder as an exclusion if you suspect this.</p>
+
+        <h2 id="agent-not-starting">Agent Not Starting Automatically</h2>
+
+        <h3>1. Verify the Task Scheduler task exists</h3>
+        <pre><code>schtasks /Query /TN CyberWatch_Agent</code></pre>
+        <p>If the task is not found, re-run the configuration wizard from the Start Menu to re-register it.</p>
+
+        <h3>2. Check the task trigger</h3>
+        <p>Open Task Scheduler (search for it in the Start Menu), find <code>CyberWatch_Agent</code>, and confirm the trigger is "At log on" for your user account.</p>
+
+        <h3>3. Run the agent manually</h3>
+        <pre><code>cd "%LOCALAPPDATA%\Programs\CyberWatch"
+cyberwatch_agent.exe</code></pre>
+        <p>Any startup errors will appear in the console or log file.</p>
+
+        <h2 id="shutdown-events">Shutdown / Restart Events Not Logged</h2>
+        <p>Windows Event ID 1074 only appears in the Event Log for <em>graceful</em> shutdowns initiated via the Start Menu or the <code>shutdown</code> command. Hard power-off events (unplugging power, battery removal) do not produce Event 1074. They appear as Event ID 6008 ("unexpected shutdown") on the <em>next</em> boot.</p>
+        <p>CyberWatch reads both events correctly. If you performed a graceful restart and no event was logged, check the application log for Windows Event Log access errors.</p>
+
+        <h2 id="installer-blocked">Installer Blocked by Antivirus</h2>
+        <p>As an unsigned installer, <code>CyberWatch-Setup.exe</code> may be quarantined by some antivirus products. Options:</p>
+        <ol>
+          <li>Temporarily disable real-time protection during installation only.</li>
+          <li>Add the downloaded file as an exclusion before running it.</li>
+          <li>Build from source yourself: see the GitHub repository for build instructions.</li>
+        </ol>
+
+        <h2 id="reconfigure">Re-opening Configuration Wizard</h2>
+        <p>If you need to update your email credentials:</p>
+        <pre><code>cd "%LOCALAPPDATA%\Programs\CyberWatch"
+cyberwatch_cli.exe configure</code></pre>
+        <p>Or use <strong>Start → CyberWatch → Configure CyberWatch</strong>.</p>
+
+        <div style="margin-top: 2.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+          <a href="faq.html" class="btn btn-primary">FAQ →</a>
+          <a href="privacy.html" class="btn btn-secondary">← Privacy Guide</a>
+        </div>
+
+      </article>
+    </div>
+  </div>
+</main>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+</script>
+</body>
+</html>

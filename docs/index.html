@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CyberWatch Documentation — Installation, Configuration, Privacy, Troubleshooting, and FAQ guides." />
+  <title>Documentation — CyberWatch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%233b82f6'/><path d='M16 6 L24 10 L24 18 C24 22 20 25.5 16 27 C12 25.5 8 22 8 18 L8 10 Z' fill='white' opacity='0.9'/><circle cx='16' cy='18' r='3' fill='%233b82f6'/></svg>" />
+  <style>
+    .docs-hero {
+      padding: 3rem 0 2rem;
+      border-bottom: 1px solid var(--border-subtle);
+      margin-bottom: 3rem;
+    }
+    .docs-hero h1 {
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+      margin-bottom: 0.75rem;
+    }
+    .docs-hero p {
+      color: var(--text-secondary);
+      font-size: 1.05rem;
+    }
+    .docs-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1rem;
+    }
+    .docs-card {
+      display: block;
+      padding: 1.75rem;
+      background: rgba(255,255,255,0.025);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      transition: all 0.25s ease;
+      text-decoration: none;
+    }
+    .docs-card:hover {
+      border-color: var(--border-accent);
+      background: rgba(59,130,246,0.04);
+      transform: translateY(-2px);
+    }
+    .docs-card:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
+    .docs-card-icon {
+      width: 40px; height: 40px;
+      background: var(--accent-dim);
+      border: 1px solid var(--border-accent);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1rem;
+    }
+    .docs-card-icon svg { width: 18px; height: 18px; color: var(--blue-400); }
+    .docs-card-title {
+      font-size: 1rem; font-weight: 600;
+      color: var(--text-primary); margin-bottom: 0.5rem;
+    }
+    .docs-card-desc {
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    .docs-card-arrow {
+      margin-top: 1rem; font-size: 0.85rem;
+      color: var(--accent); font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Nav -->
+<header id="navbar" role="banner">
+  <div class="nav-shell">
+
+    <!-- LEFT: Logo -->
+    <a href="../index.html" class="nav-logo" aria-label="CyberWatch home">
+      <div class="nav-logo-mark" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+      </div>
+      <span class="nav-logo-text">CyberWatch</span>
+      <span class="nav-logo-tag">v1.0</span>
+    </a>
+
+    <!-- CENTER: Pill navigation -->
+    <nav class="nav-pill" aria-label="Main navigation">
+      <ul class="nav-pill-links" role="list">
+        <li><a href="../index.html#features"      class="nav-pill-link" data-label="Features">Features</a></li>
+        <li><a href="../index.html#how-it-works"  class="nav-pill-link" data-label="Architecture">How it works</a></li>
+        <li><a href="../index.html#security"      class="nav-pill-link" data-label="Privacy">Privacy</a></li>
+        <li><a href="../index.html#validation"    class="nav-pill-link" data-label="Tests">Testing</a></li>
+        <li><a href="index.html" class="nav-pill-link active" data-label="Docs">Docs</a></li>
+      </ul>
+    </nav>
+
+    <!-- RIGHT: Actions -->
+    <div class="nav-actions">
+
+      <a
+        href="../downloads/CyberWatch-Setup.exe"
+        class="nav-dl-btn"
+        download="CyberWatch-Setup.exe"
+        id="nav-download-btn"
+        data-download
+        aria-label="Download CyberWatch for Windows"
+      >
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        <span>Download</span>
+      </a>
+
+      <!-- Mobile menu button -->
+      <button
+        id="mobile-menu-btn"
+        class="nav-mobile-btn"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+  </div>
+</header>
+
+<!-- Mobile drawer -->
+<nav id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation" aria-hidden="true">
+  <a href="../index.html#features"      class="nav-pill-link">Features</a>
+  <a href="../index.html#how-it-works"  class="nav-pill-link">How it works</a>
+  <a href="../index.html#security"      class="nav-pill-link">Privacy</a>
+  <a href="../index.html#validation"    class="nav-pill-link">Testing</a>
+  <a href="../index.html#download"      class="nav-pill-link">Download</a>
+  <a href="index.html" class="nav-pill-link active">Documentation</a>
+  <div class="mobile-menu-ctas">
+    <a href="../downloads/CyberWatch-Setup.exe" download="CyberWatch-Setup.exe" class="nav-dl-btn" style="justify-content:center;padding:0.7rem 1.25rem;">Download CyberWatch</a>
+  </div>
+</nav>
+<main style="padding-top: var(--nav-height);">
+  <div class="container">
+
+    <div class="docs-hero">
+      <p class="section-eyebrow">Documentation</p>
+      <h1>CyberWatch Docs</h1>
+      <p>Guides for installing, configuring, and managing CyberWatch on Windows 10 and Windows 11.</p>
+    </div>
+
+    <div class="docs-cards">
+
+      <a href="installation.html" class="docs-card" id="doc-installation">
+        <div class="docs-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+        </div>
+        <div class="docs-card-title">Installation Guide</div>
+        <div class="docs-card-desc">Step-by-step instructions for downloading and installing CyberWatch using the Windows installer.</div>
+        <div class="docs-card-arrow">Read guide →</div>
+      </a>
+
+      <a href="configuration.html" class="docs-card" id="doc-configuration">
+        <div class="docs-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.07 4.93l-1.41 1.41M4.93 4.93l1.41 1.41M12 2v2M12 20v2M2 12h2M20 12h2M17.66 17.66l-1.41-1.41M6.34 17.66l1.41-1.41"/>
+          </svg>
+        </div>
+        <div class="docs-card-title">Configuration Guide</div>
+        <div class="docs-card-desc">Configure SMTP credentials, Gmail App Passwords, notification emails, and advanced settings.</div>
+        <div class="docs-card-arrow">Read guide →</div>
+      </a>
+
+      <a href="privacy.html" class="docs-card" id="doc-privacy">
+        <div class="docs-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <div class="docs-card-title">Privacy Guide</div>
+        <div class="docs-card-desc">Understand exactly what CyberWatch monitors and what it explicitly does not capture or transmit.</div>
+        <div class="docs-card-arrow">Read guide →</div>
+      </a>
+
+      <a href="troubleshooting.html" class="docs-card" id="doc-troubleshooting">
+        <div class="docs-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="12"/>
+            <line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+        </div>
+        <div class="docs-card-title">Troubleshooting</div>
+        <div class="docs-card-desc">Solutions to common issues including SMTP errors, lock/unlock detection problems, and startup failures.</div>
+        <div class="docs-card-arrow">Read guide →</div>
+      </a>
+
+      <a href="faq.html" class="docs-card" id="doc-faq">
+        <div class="docs-card-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+          </svg>
+        </div>
+        <div class="docs-card-title">FAQ</div>
+        <div class="docs-card-desc">Frequently asked questions about privacy, compatibility, email setup, and how CyberWatch works.</div>
+        <div class="docs-card-arrow">Read FAQ →</div>
+      </a>
+
+    </div>
+
+    <div style="margin-top: 3rem; padding: 1.5rem; background: var(--accent-dim); border: 1px solid var(--border-accent); border-radius: 12px; font-size: 0.9rem; color: var(--blue-300);" role="note">
+      <strong>New to CyberWatch?</strong> Start with the <a href="installation.html" style="color: var(--accent); text-decoration: underline; text-underline-offset: 3px;">Installation Guide</a>,
+      then read the <a href="configuration.html" style="color: var(--accent); text-decoration: underline; text-underline-offset: 3px;">Configuration Guide</a>
+      to set up your email alerts.
+    </div>
+
+    <div style="margin-top: 3rem; padding-bottom: 4rem;">
+      <a href="../index.html" class="btn btn-secondary">← Back to Home</a>
+    </div>
+
+  </div>
+</main>
+
+<script>
+  window.addEventListener('scroll', () => {
+    const nav = document.getElementById('navbar');
+    nav.classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+</script>
+</body>
+</html>

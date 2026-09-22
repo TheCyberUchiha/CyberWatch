@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CyberWatch User Guide — Quick setup guide for installing and configuring CyberWatch on Windows." />
+  <title>CyberWatch — User Setup Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%233b82f6'/><path d='M16 6 L24 10 L24 18 C24 22 20 25.5 16 27 C12 25.5 8 22 8 18 L8 10 Z' fill='white' opacity='0.9'/><circle cx='16' cy='18' r='3' fill='%233b82f6'/></svg>" />
+  <style>
+    @media print {
+      #navbar, .print-hide { display: none !important; }
+      body { background: white; color: #111; }
+      .guide-card { border: 1px solid #ddd !important; }
+    }
+    .guide-container {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: calc(var(--nav-height) + 3rem) 1.5rem 4rem;
+    }
+    .guide-header {
+      text-align: center;
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .guide-header h1 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      margin-bottom: 0.75rem;
+    }
+    .guide-header p { color: var(--text-secondary); font-size: 1.05rem; }
+    .guide-section {
+      margin-bottom: 2.5rem;
+    }
+    .guide-section h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+    .guide-section h2 .step-num {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: var(--accent-dim);
+      border: 1px solid var(--border-accent);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.875rem; font-weight: 700;
+      color: var(--accent); flex-shrink: 0;
+    }
+    .guide-card {
+      background: rgba(255,255,255,0.025);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .guide-card p, .guide-card li {
+      font-size: 0.9375rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+    .guide-card ul { list-style: disc; padding-left: 1.5rem; }
+    .guide-card li { margin-bottom: 0.4rem; }
+    .guide-card code {
+      font-family: var(--font-mono);
+      font-size: 0.85em;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid var(--border-low);
+      padding: 0.15em 0.5em;
+      border-radius: 4px;
+      color: var(--blue-300);
+    }
+    .does-not-do {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+      margin-top: 0.75rem;
+    }
+    @media (max-width: 600px) {
+      .does-not-do { grid-template-columns: 1fr; }
+    }
+    .does-not-item {
+      display: flex; align-items: center; gap: 0.5rem;
+      font-size: 0.875rem; color: var(--text-secondary);
+    }
+    .does-not-item svg { flex-shrink: 0; }
+    .warning-box {
+      padding: 1.125rem 1.25rem;
+      background: rgba(245, 158, 11, 0.06);
+      border: 1px solid rgba(245, 158, 11, 0.2);
+      border-radius: 10px;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+    }
+    .warning-box strong { color: var(--amber); }
+    .print-btn {
+      position: fixed;
+      bottom: 2rem; right: 2rem;
+      z-index: 100;
+    }
+    @media (max-width: 480px) {
+      .print-btn { bottom: 1rem; right: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header id="navbar" class="print-hide" role="banner">
+  <div class="nav-shell">
+
+    <!-- LEFT: Logo -->
+    <a href="../index.html" class="nav-logo" aria-label="CyberWatch home">
+      <div class="nav-logo-mark" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+      </div>
+      <span class="nav-logo-text">CyberWatch</span>
+      <span class="nav-logo-tag">v1.0</span>
+    </a>
+
+    <!-- CENTER: Pill navigation -->
+    <nav class="nav-pill" aria-label="Main navigation">
+      <ul class="nav-pill-links" role="list">
+        <li><a href="../index.html#features"      class="nav-pill-link" data-label="Features">Features</a></li>
+        <li><a href="../index.html#how-it-works"  class="nav-pill-link" data-label="Architecture">How it works</a></li>
+        <li><a href="../index.html#security"      class="nav-pill-link" data-label="Privacy">Privacy</a></li>
+        <li><a href="../index.html#validation"    class="nav-pill-link" data-label="Tests">Testing</a></li>
+        <li><a href="../docs/index.html" class="nav-pill-link" data-label="Docs">Docs</a></li>
+      </ul>
+    </nav>
+
+    <!-- RIGHT: Actions -->
+    <div class="nav-actions">
+
+      <a
+        href="CyberWatch-Setup.exe"
+        class="nav-dl-btn"
+        download="CyberWatch-Setup.exe"
+        id="nav-download-btn"
+        data-download
+        aria-label="Download CyberWatch for Windows"
+      >
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        <span>Download</span>
+      </a>
+
+      <!-- Mobile menu button -->
+      <button
+        id="mobile-menu-btn"
+        class="nav-mobile-btn"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+  </div>
+</header>
+
+<!-- Mobile drawer -->
+<nav id="mobile-menu" class="mobile-menu print-hide" aria-label="Mobile navigation" aria-hidden="true">
+  <a href="../index.html#features"      class="nav-pill-link">Features</a>
+  <a href="../index.html#how-it-works"  class="nav-pill-link">How it works</a>
+  <a href="../index.html#security"      class="nav-pill-link">Privacy</a>
+  <a href="../index.html#validation"    class="nav-pill-link">Testing</a>
+  <a href="../index.html#download"      class="nav-pill-link">Download</a>
+  <a href="../docs/index.html"          class="nav-pill-link">Documentation</a>
+  <div class="mobile-menu-ctas">
+    <a href="CyberWatch-Setup.exe" download="CyberWatch-Setup.exe" class="nav-dl-btn" style="justify-content:center;padding:0.7rem 1.25rem;">Download CyberWatch</a>
+  </div>
+</nav>
+
+<div class="guide-container">
+
+  <div class="guide-header">
+    <div style="display:flex;justify-content:center;margin-bottom:1.25rem;">
+      <div style="width:64px;height:64px;background:linear-gradient(135deg,var(--blue-600),var(--blue-400));border-radius:16px;display:flex;align-items:center;justify-content:center;">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+      </div>
+    </div>
+    <h1 class="gradient-text">CyberWatch</h1>
+    <p>Quick Setup Guide · Personal Windows Security Monitor</p>
+  </div>
+
+  <!-- What CyberWatch does -->
+  <div class="guide-section">
+    <h2>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+      What CyberWatch Does
+    </h2>
+    <div class="guide-card">
+      <p>CyberWatch is a personal security monitoring tool for your Windows laptop. It monitors Windows session lock/unlock and system startup/shutdown events, records them to a private local database on your computer, and sends you instant email alerts.</p>
+      <ul style="margin-top:1rem;">
+        <li>✅ Monitors: Windows screen Lock, screen Unlock, system Shutdown, Restart</li>
+        <li>✅ Alerts: Sends instant email to <em>your</em> inbox</li>
+        <li>✅ Local: All records stay on your computer — no cloud uploads</li>
+      </ul>
+      <p style="margin-top:1rem; font-weight:600; color:var(--text-primary);">What CyberWatch does NOT do:</p>
+      <div class="does-not-do">
+        <div class="does-not-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          No keystroke logging
+        </div>
+        <div class="does-not-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          No password capture
+        </div>
+        <div class="does-not-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          No screenshots
+        </div>
+        <div class="does-not-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          No browser history
+        </div>
+        <div class="does-not-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          No webcam/microphone
+        </div>
+        <div class="does-not-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          No cloud telemetry
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 1 -->
+  <div class="guide-section">
+    <h2>
+      <span class="step-num" aria-hidden="true">1</span>
+      Create a Gmail App Password (~2 minutes)
+    </h2>
+    <div class="guide-card">
+      <p>CyberWatch sends alerts via Gmail. You need a special 16-character code called an App Password (not your regular Gmail password).</p>
+      <ol style="padding-left:1.5rem; margin-top:0.75rem;">
+        <li>Go to <a href="https://myaccount.google.com" target="_blank" rel="noopener noreferrer" style="color:var(--accent);">myaccount.google.com</a></li>
+        <li>Click <strong>Security</strong> → ensure <strong>2-Step Verification</strong> is ON</li>
+        <li>Go to <a href="https://myaccount.google.com/apppasswords" target="_blank" rel="noopener noreferrer" style="color:var(--accent);">App Passwords</a></li>
+        <li>Enter name <code>CyberWatch</code> → click <strong>Create</strong></li>
+        <li>Copy the <strong>16-character code</strong> shown — you'll use it in Step 2</li>
+      </ol>
+      <div class="warning-box">
+        <strong>⚠️ Keep this code private.</strong> It belongs to your Google account. Never share it with anyone. CyberWatch only uses it to send alerts to your own inbox.
+      </div>
+    </div>
+  </div>
+
+  <!-- Step 2 -->
+  <div class="guide-section">
+    <h2>
+      <span class="step-num" aria-hidden="true">2</span>
+      Run the Installer
+    </h2>
+    <div class="guide-card">
+      <ol style="padding-left:1.5rem;">
+        <li>Double-click <code>CyberWatch-Setup.exe</code></li>
+        <li>If Windows shows a SmartScreen warning: click <strong>More info → Run anyway</strong><br><span style="font-size:0.85rem;color:var(--text-tertiary);">(This is normal for open-source software without a paid certificate)</span></li>
+        <li>Read the information screen and click <strong>Next</strong></li>
+        <li>Leave the installation folder as default → click <strong>Next</strong></li>
+        <li>On the configuration screen, enter:
+          <ul style="margin-top:0.5rem;">
+            <li><strong>Notification Recipient Email</strong> — where you want to receive alerts</li>
+            <li><strong>SMTP User / Gmail Address</strong> — the Gmail account that sends alerts</li>
+            <li><strong>Gmail App Password</strong> — the 16-character code from Step 1</li>
+          </ul>
+        </li>
+        <li>Click <strong>Next → Install</strong></li>
+        <li>On the final screen, check <strong>"Send a test notification email now"</strong> to verify setup</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- Step 3 -->
+  <div class="guide-section">
+    <h2>
+      <span class="step-num" aria-hidden="true">3</span>
+      You're Done — CyberWatch is Active
+    </h2>
+    <div class="guide-card">
+      <p>CyberWatch is now running and registered in Windows Task Scheduler. It will start automatically every time you log into Windows.</p>
+      <p>You'll receive email alerts when:</p>
+      <ul>
+        <li>Your screen is locked or unlocked</li>
+        <li>Your computer restarts or shuts down</li>
+        <li>CyberWatch starts or stops</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Managing -->
+  <div class="guide-section">
+    <h2>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41"/>
+      </svg>
+      Managing CyberWatch
+    </h2>
+    <div class="guide-card">
+      <p>After installation, find CyberWatch shortcuts in your <strong>Windows Start Menu</strong>:</p>
+      <ul>
+        <li><strong>Configure CyberWatch</strong> — update your email or App Password</li>
+        <li><strong>Test Email Notification</strong> — send a test alert immediately</li>
+        <li><strong>Check Task Status</strong> — verify the background agent is running</li>
+        <li><strong>View Logs</strong> — open the event log in Notepad</li>
+        <li><strong>Uninstall CyberWatch</strong> — remove the application cleanly</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Uninstall -->
+  <div class="guide-section">
+    <h2>
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--text-tertiary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/>
+      </svg>
+      How to Uninstall
+    </h2>
+    <div class="guide-card">
+      <p>To remove CyberWatch:</p>
+      <ol style="padding-left:1.5rem;">
+        <li>Open <strong>Windows Settings → Apps → Installed Apps</strong></li>
+        <li>Find <strong>CyberWatch</strong> → click <strong>Uninstall</strong></li>
+        <li>Or use <strong>Start → CyberWatch → Uninstall CyberWatch</strong></li>
+      </ol>
+      <p style="margin-top:0.75rem;">The uninstaller stops the background agent, removes the Task Scheduler entry, and removes all application files.</p>
+    </div>
+  </div>
+
+  <div style="text-align:center; margin-top:3rem; padding-top:2rem; border-top:1px solid var(--border-subtle); color:var(--text-tertiary); font-size:0.875rem;">
+    CyberWatch · Personal Windows Security Monitor · MIT License
+    <br>
+    <a href="../index.html" style="color:var(--accent); margin-top:0.5rem; display:inline-block;">cyberwatch website</a>
+    ·
+    <a href="https://github.com/yourusername/cyberwatch" target="_blank" rel="noopener noreferrer" style="color:var(--accent);">github</a>
+  </div>
+
+</div>
+
+<!-- Print button -->
+<button
+  class="btn btn-secondary print-hide print-btn"
+  onclick="window.print()"
+  aria-label="Print this guide"
+  style="box-shadow: 0 8px 32px rgba(0,0,0,0.3);"
+>
+  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+    <rect x="6" y="14" width="12" height="8"/>
+  </svg>
+  Print / Save PDF
+</button>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+</script>
+</body>
+</html>

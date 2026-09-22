@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CyberWatch — Personal Windows Security Monitor. Detect session events, store activity locally, and receive configurable email notifications. Free, open-source, privacy-first." />
+  <meta name="keywords" content="CyberWatch, Windows security monitor, session monitoring, email alerts, open source, privacy" />
+  <meta name="theme-color" content="#060a14" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="CyberWatch — Personal Windows Security Monitor" />
+  <meta property="og:description" content="Monitor Windows session events, store activity locally, and receive email notifications. Privacy-first, open-source." />
+  <meta property="og:type" content="website" />
+
+  <title>CyberWatch — Personal Windows Security Monitor</title>
+
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='7' fill='%231d4ed8'/><path d='M16 5L25 9V17C25 22.5 20.5 26.5 16 28C11.5 26.5 7 22.5 7 17V9Z' fill='white' opacity='0.9'/><circle cx='16' cy='17' r='4' fill='%231d4ed8'/><circle cx='16' cy='17' r='2' fill='white' opacity='0.7'/></svg>" />
+</head>
+<body>
+
+<!-- Cursor glow -->
+<div id="cursor-glow" aria-hidden="true"></div>
+
+<!-- ═══════════════════════════════════════
+     NAVIGATION
+════════════════════════════════════════ -->
+<header id="navbar" role="banner">
+  <div class="nav-shell">
+
+    <!-- LEFT: Logo -->
+    <a href="#" class="nav-logo" aria-label="CyberWatch home">
+      <div class="nav-logo-mark" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+      </div>
+      <span class="nav-logo-text">CyberWatch</span>
+      <span class="nav-logo-tag">v1.0</span>
+    </a>
+
+    <!-- CENTER: Pill navigation -->
+    <nav class="nav-pill" aria-label="Main navigation">
+      <ul class="nav-pill-links" role="list">
+        <li><a href="#features"      class="nav-pill-link" data-label="Features">Features</a></li>
+        <li><a href="#how-it-works"  class="nav-pill-link" data-label="Architecture">How it works</a></li>
+        <li><a href="#security"      class="nav-pill-link" data-label="Privacy">Privacy</a></li>
+        <li><a href="#validation"    class="nav-pill-link" data-label="Tests">Testing</a></li>
+        <li><a href="docs/index.html" class="nav-pill-link" data-label="Docs">Docs</a></li>
+      </ul>
+    </nav>
+
+    <!-- RIGHT: Actions -->
+    <div class="nav-actions">
+
+      <a
+        href="downloads/CyberWatch-Setup.exe"
+        class="nav-dl-btn"
+        download="CyberWatch-Setup.exe"
+        id="nav-download-btn"
+        data-download
+        aria-label="Download CyberWatch for Windows"
+      >
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        <span>Download</span>
+      </a>
+
+      <!-- Mobile menu button -->
+      <button
+        id="mobile-menu-btn"
+        class="nav-mobile-btn"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+  </div>
+</header>
+
+<!-- Mobile drawer -->
+<nav id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation" aria-hidden="true">
+  <a href="#features"      class="nav-pill-link">Features</a>
+  <a href="#how-it-works"  class="nav-pill-link">How it works</a>
+  <a href="#security"      class="nav-pill-link">Privacy</a>
+  <a href="#validation"    class="nav-pill-link">Testing</a>
+  <a href="#download"      class="nav-pill-link">Download</a>
+  <a href="docs/index.html" class="nav-pill-link">Documentation</a>
+  <div class="mobile-menu-ctas">
+    <a href="downloads/CyberWatch-Setup.exe" download="CyberWatch-Setup.exe" class="nav-dl-btn" style="justify-content:center;padding:0.7rem 1.25rem;">Download CyberWatch</a>
+
+  </div>
+</nav>
+
+<main id="main-content">
+
+<!-- ═══════════════════════════════════════
+     HERO
+════════════════════════════════════════ -->
+<section id="hero" aria-labelledby="hero-title">
+
+  <!-- Background layers -->
+  <div class="hero-bg" aria-hidden="true">
+    <div class="hero-bg-image"></div>
+    <div class="hero-bg-noise"></div>
+    <div class="hero-bg-grid"></div>
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-orb hero-orb-3"></div>
+  </div>
+
+  <!-- Three.js canvas -->
+  <canvas id="hero-canvas" aria-hidden="true" tabindex="-1"></canvas>
+
+  <div class="container">
+    <div class="hero-content">
+
+      <div class="hero-badge" aria-label="Personal Windows Security Monitor">
+        <span class="hero-badge-dot" aria-hidden="true"></span>
+        Personal Windows Security Monitor
+      </div>
+
+      <h1 class="hero-title" id="hero-title">
+        <span class="line-1">Cyber<wbr>Watch</span>
+        <span class="line-2">Monitor. Record. Alert.</span>
+      </h1>
+
+      <p class="hero-description">
+        Monitor important Windows security and session events, store activity locally,
+        and receive configurable email notifications — with zero cloud dependency and
+        no invasive surveillance.
+      </p>
+
+      <div class="hero-ctas">
+        <a
+          href="downloads/CyberWatch-Setup.exe"
+          class="download-primary"
+          download="CyberWatch-Setup.exe"
+          id="hero-download-btn"
+          data-download
+          aria-label="Download CyberWatch installer for Windows"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          Download CyberWatch
+        </a>
+
+        <a href="docs/index.html" class="btn btn-ghost btn-lg" id="hero-docs-btn">
+          Documentation →
+        </a>
+      </div>
+
+      <div class="hero-stats" aria-label="Project highlights">
+        <div class="hero-stat">
+          <span class="hero-stat-value">12</span>
+          <span class="hero-stat-label">Tests Passed</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-value">10</span>
+          <span class="hero-stat-label">Event Types</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-value">0</span>
+          <span class="hero-stat-label">Cloud Deps</span>
+        </div>
+        <div class="hero-stat">
+          <span class="hero-stat-value">MIT</span>
+          <span class="hero-stat-label">License</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll indicator -->
+  <div class="hero-scroll-indicator" aria-hidden="true">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <polyline points="6 9 12 15 18 9"/>
+    </svg>
+    scroll
+  </div>
+
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     FEATURES
+════════════════════════════════════════ -->
+<section id="features" class="section" aria-labelledby="features-title">
+  <div class="container">
+    <div class="features-header">
+      <p class="section-eyebrow fade-up">Capabilities</p>
+      <h2 class="section-title fade-up" id="features-title">What CyberWatch Monitors</h2>
+      <p class="section-subtitle fade-up">
+        Every feature is real, tested, and validated on Windows 10 and 11.
+        No invented capabilities — only what actually ships.
+      </p>
+    </div>
+
+    <div class="features-grid fade-up" role="list">
+
+      <!-- Lock Detection -->
+      <article class="feature-card" role="listitem">
+        <div class="feature-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+          </svg>
+        </div>
+        <h3 class="feature-title">Screen Lock Detection</h3>
+        <p class="feature-desc">Detects Windows screen lock events via the WTS Session Notification API. Records timestamp and session context to the local SQLite database instantly.</p>
+      </article>
+
+      <!-- Unlock Detection -->
+      <article class="feature-card" role="listitem">
+        <div class="feature-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/>
+          </svg>
+        </div>
+        <h3 class="feature-title">Screen Unlock Detection</h3>
+        <p class="feature-desc">Captures screen unlock events via WTS notifications and immediately dispatches an email alert — notifying you the moment your session becomes accessible.</p>
+      </article>
+
+      <!-- Agent lifecycle -->
+      <article class="feature-card" role="listitem">
+        <div class="feature-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+          </svg>
+        </div>
+        <h3 class="feature-title">Agent Startup &amp; Shutdown</h3>
+        <p class="feature-desc">Self-reports its own startup and graceful shutdown events. Lets you confirm the agent is alive and track any unexpected interruptions in your event history.</p>
+      </article>
+
+      <!-- Restart/Shutdown recovery -->
+      <article class="feature-card" role="listitem">
+        <div class="feature-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/>
+            <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/>
+          </svg>
+        </div>
+        <h3 class="feature-title">Restart &amp; Shutdown Recovery</h3>
+        <p class="feature-desc">Reads Windows Event Log (ID 1074 graceful, ID 6008 unexpected) on startup, detecting system events that occurred while the agent was offline.</p>
+      </article>
+
+      <!-- SQLite storage -->
+      <article class="feature-card" role="listitem">
+        <div class="feature-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
+            <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+          </svg>
+        </div>
+        <h3 class="feature-title">SQLite Event Persistence</h3>
+        <p class="feature-desc">Every security event is stored in a local SQLite database (WAL mode) on your machine. No cloud uploads. Full event history remains private and on-device.</p>
+      </article>
+
+      <!-- Email notifications -->
+      <article class="feature-card" role="listitem">
+        <div class="feature-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+        </div>
+        <h3 class="feature-title">Email Notifications</h3>
+        <p class="feature-desc">Sends real-time SMTP email alerts with clean HTML and plain-text templates. Works with Gmail App Passwords or any standard SMTP server with STARTTLS/TLS.</p>
+      </article>
+
+      <!-- Dedup -->
+      <article class="feature-card" role="listitem">
+        <div class="feature-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+          </svg>
+        </div>
+        <h3 class="feature-title">Duplicate-Event Suppression</h3>
+        <p class="feature-desc">A configurable deduplication filter prevents sending multiple alerts for the same event type within a defined window. Eliminates notification storms.</p>
+      </article>
+
+      <!-- SMTP retry -->
+      <article class="feature-card" role="listitem">
+        <div class="feature-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/>
+          </svg>
+        </div>
+        <h3 class="feature-title">SMTP Retry Handling</h3>
+        <p class="feature-desc">Automatically retries failed SMTP connections with exponential back-off (5s → 30s → 120s). Transient network issues never silently drop an alert.</p>
+      </article>
+
+      <!-- Structured logging -->
+      <article class="feature-card" role="listitem">
+        <div class="feature-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/>
+            <line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/>
+            <line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/>
+          </svg>
+        </div>
+        <h3 class="feature-title">Structured Logging</h3>
+        <p class="feature-desc">Produces rotating, structured log files for all agent activity. Easily readable in any text editor. Start Menu shortcut opens logs directly in Notepad.</p>
+      </article>
+
+      <!-- Auto startup -->
+      <article class="feature-card" role="listitem">
+        <div class="feature-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="5 3 19 12 5 21 5 3"/>
+          </svg>
+        </div>
+        <h3 class="feature-title">Automatic Windows Startup</h3>
+        <p class="feature-desc">Registers itself in Windows Task Scheduler with an "At Logon" trigger. No administrator rights required. Starts silently whenever you sign in to Windows.</p>
+      </article>
+
+      <!-- Local only -->
+      <article class="feature-card" role="listitem">
+        <div class="feature-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/>
+            <line x1="12" y1="17" x2="12" y2="21"/>
+          </svg>
+        </div>
+        <h3 class="feature-title">Fully Local Monitoring</h3>
+        <p class="feature-desc">All event collection, storage, and processing happens locally on your Windows machine. No data leaves your device except the SMTP email to your own inbox.</p>
+      </article>
+
+      <!-- Windows Event Log -->
+      <article class="feature-card" role="listitem">
+        <div class="feature-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <h3 class="feature-title">Windows Event Log Integration</h3>
+        <p class="feature-desc">Integrates directly with the Windows Event Log subsystem for system-level events (shutdown, restart, unexpected power-off) via native Win32 APIs.</p>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     HOW IT WORKS
+════════════════════════════════════════ -->
+<section id="how-it-works" class="section" aria-labelledby="how-title">
+  <div class="container">
+    <div class="how-grid">
+
+      <div>
+        <p class="section-eyebrow fade-up">Architecture</p>
+        <h2 class="section-title fade-up" id="how-title">How CyberWatch Works</h2>
+        <p class="section-subtitle fade-up">
+          A lightweight background agent collects Windows security events, normalises them
+          through an internal event bus, stores each record in a local SQLite database,
+          and dispatches email notifications — all without a network call except to your own SMTP server.
+        </p>
+        <div style="margin-top: 2rem;" class="fade-up">
+          <a href="docs/installation.html" class="btn btn-secondary">Read Architecture Docs →</a>
+        </div>
+      </div>
+
+      <div class="architecture-flow fade-in" aria-label="Event processing pipeline">
+
+        <div class="arch-step">
+          <div class="arch-step-left">
+            <div class="arch-node" aria-label="Step 1">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+              </svg>
+            </div>
+            <div class="arch-connector"><div class="arch-connector-fill"></div></div>
+          </div>
+          <div class="arch-step-right">
+            <p class="arch-step-label">01 — Source</p>
+            <h3 class="arch-step-title">Windows Events</h3>
+            <p class="arch-step-desc">WTS Session notifications and Windows Event Log (IDs 1074, 6008) provide the raw event stream from the operating system.</p>
+          </div>
+        </div>
+
+        <div class="arch-step">
+          <div class="arch-step-left">
+            <div class="arch-node" aria-label="Step 2">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="18" cy="18" r="3"/><circle cx="6" cy="6" r="3"/>
+                <path d="M6 21V9a9 9 0 0 0 9 9"/>
+              </svg>
+            </div>
+            <div class="arch-connector"><div class="arch-connector-fill"></div></div>
+          </div>
+          <div class="arch-step-right">
+            <p class="arch-step-label">02 — Collect</p>
+            <h3 class="arch-step-title">Collectors</h3>
+            <p class="arch-step-desc">Specialised collectors (wts_session, system_events, lifecycle) listen for their respective event types and publish normalised EventRecord objects.</p>
+          </div>
+        </div>
+
+        <div class="arch-step">
+          <div class="arch-step-left">
+            <div class="arch-node" aria-label="Step 3">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/>
+              </svg>
+            </div>
+            <div class="arch-connector"><div class="arch-connector-fill"></div></div>
+          </div>
+          <div class="arch-step-right">
+            <p class="arch-step-label">03 — Filter</p>
+            <h3 class="arch-step-title">EventBus + Dedup</h3>
+            <p class="arch-step-desc">The EventBus dispatches events to all subscribers. A deduplication filter suppresses identical events within a configurable time window.</p>
+          </div>
+        </div>
+
+        <div class="arch-step">
+          <div class="arch-step-left">
+            <div class="arch-node" aria-label="Step 4">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <ellipse cx="12" cy="5" rx="9" ry="3"/>
+                <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
+                <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+              </svg>
+            </div>
+            <div class="arch-connector"><div class="arch-connector-fill"></div></div>
+          </div>
+          <div class="arch-step-right">
+            <p class="arch-step-label">04 — Store</p>
+            <h3 class="arch-step-title">SQLite Database</h3>
+            <p class="arch-step-desc">DatabaseHandler persists every event to a local SQLite DB (WAL mode). Records include full metadata and email delivery status.</p>
+          </div>
+        </div>
+
+        <div class="arch-step">
+          <div class="arch-step-left">
+            <div class="arch-node" aria-label="Step 5">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                <polyline points="22,6 12,13 2,6"/>
+              </svg>
+            </div>
+            <div class="arch-connector"><div class="arch-connector-fill"></div></div>
+          </div>
+          <div class="arch-step-right">
+            <p class="arch-step-label">05 — Notify</p>
+            <h3 class="arch-step-title">Email Notifier</h3>
+            <p class="arch-step-desc">EmailNotifier delivers alerts via SMTP/TLS with exponential back-off retry. Failures are logged and the event is flagged in the database.</p>
+          </div>
+        </div>
+
+        <div class="arch-step">
+          <div class="arch-step-left">
+            <div class="arch-node" aria-label="Step 6">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.35 2 2 0 0 1 3.6 1.14h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.7a16 16 0 0 0 6.29 6.29l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+            </div>
+          </div>
+          <div class="arch-step-right">
+            <p class="arch-step-label">06 — Delivered</p>
+            <h3 class="arch-step-title">Your Inbox</h3>
+            <p class="arch-step-desc">You receive a clean, formatted security alert email — the only data that ever leaves your machine, sent directly to your own inbox.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════
+     SECURITY / PRIVACY
+════════════════════════════════════════ -->
+<section id="security" class="section" aria-labelledby="security-title">
+  <div class="container">
+    <p class="section-eyebrow fade-up">Privacy First</p>
+    <h2 class="section-title fade-up" id="security-title">Designed for Transparency</h2>
+    <p class="section-subtitle fade-up">
+      CyberWatch is built around session-level event monitoring — not content surveillance.
+      Here is exactly what it does and does not access.
+    </p>
+
+    <div class="security-grid">
+
+      <div class="fade-up">
+        <h3 style="font-size:1.1rem;font-weight:700;color:var(--text-primary);margin-bottom:1.25rem;letter-spacing:-0.01em;">
+          What CyberWatch <span style="color:#ef4444;">Does NOT</span> Capture
+        </h3>
+        <ul class="no-list" role="list">
+          <li class="no-list-item"><span class="no-icon" aria-hidden="true">✕</span>Keystrokes or typed input</li>
+          <li class="no-list-item"><span class="no-icon" aria-hidden="true">✕</span>Passwords or credentials</li>
+          <li class="no-list-item"><span class="no-icon" aria-hidden="true">✕</span>Clipboard contents</li>
+          <li class="no-list-item"><span class="no-icon" aria-hidden="true">✕</span>Screenshots or screen recordings</li>
+          <li class="no-list-item"><span class="no-icon" aria-hidden="true">✕</span>Browser history or web activity</li>
+          <li class="no-list-item"><span class="no-icon" aria-hidden="true">✕</span>Webcam or microphone</li>
+          <li class="no-list-item"><span class="no-icon" aria-hidden="true">✕</span>File access or application usage</li>
+          <li class="no-list-item"><span class="no-icon" aria-hidden="true">✕</span>Network traffic</li>
+        </ul>
+      </div>
+
+      <div class="fade-up">
+        <h3 style="font-size:1.1rem;font-weight:700;color:var(--text-primary);margin-bottom:1.25rem;letter-spacing:-0.01em;">
+          What CyberWatch <span style="color:#10b981;">Does</span> Capture
+        </h3>
+        <ul class="no-list" role="list" style="--no-color:#10b981;">
+          <li class="no-list-item" style="background:rgba(16,185,129,0.04);border-color:rgba(16,185,129,0.12);">
+            <span class="no-icon" style="background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.2);color:#10b981;" aria-hidden="true">✓</span>
+            Event type (LOCK, UNLOCK, SHUTDOWN…)
+          </li>
+          <li class="no-list-item" style="background:rgba(16,185,129,0.04);border-color:rgba(16,185,129,0.12);">
+            <span class="no-icon" style="background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.2);color:#10b981;" aria-hidden="true">✓</span>
+            Timestamp (local + UTC)
+          </li>
+          <li class="no-list-item" style="background:rgba(16,185,129,0.04);border-color:rgba(16,185,129,0.12);">
+            <span class="no-icon" style="background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.2);color:#10b981;" aria-hidden="true">✓</span>
+            Windows username
+          </li>
+          <li class="no-list-item" style="background:rgba(16,185,129,0.04);border-color:rgba(16,185,129,0.12);">
+            <span class="no-icon" style="background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.2);color:#10b981;" aria-hidden="true">✓</span>
+            Computer name
+          </li>
+          <li class="no-list-item" style="background:rgba(16,185,129,0.04);border-color:rgba(16,185,129,0.12);">
+            <span class="no-icon" style="background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.2);color:#10b981;" aria-hidden="true">✓</span>
+            Windows Session ID
+          </li>
+          <li class="no-list-item" style="background:rgba(16,185,129,0.04);border-color:rgba(16,185,129,0.12);">
+            <span class="no-icon" style="background:rgba(16,185,129,0.1);border-color:rgba(16,185,129,0.2);color:#10b981;" aria-hidden="true">✓</span>
+            Windows Event ID and source
+          </li>
+        </ul>
+
+        <div class="privacy-note" style="margin-top:1.5rem;">
+          <p>
+            Your Gmail App Password is stored <strong>only</strong> in the local <code style="font-family:var(--font-mono);font-size:0.85em;color:var(--blue-300);">.env</code> file on your device.
+            It is never written to logs, never sent to any CyberWatch server (none exists), and never included in the installer binary.
+            <strong>Never share your App Password with anyone.</strong>
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     TESTING / VALIDATION
+════════════════════════════════════════ -->
+<section id="validation" class="section" aria-labelledby="validation-title">
+  <div class="container">
+    <p class="section-eyebrow fade-up">Quality Assurance</p>
+    <h2 class="section-title fade-up" id="validation-title">Manually Validated</h2>
+    <p class="section-subtitle fade-up">
+      CyberWatch has been comprehensively tested against real Windows session and system events.
+      All results reflect actual validation on a Windows 10/11 test machine.
+    </p>
+
+    <div class="validation-summary fade-up" aria-label="Validation summary">
+      <div class="validation-stat">
+        <div class="validation-stat-number" aria-label="12 tests passed">12</div>
+        <div class="validation-stat-label">Tests Passed</div>
+      </div>
+      <div class="validation-stat na">
+        <div class="validation-stat-number" aria-label="1 test not applicable">1</div>
+        <div class="validation-stat-label">Not Applicable</div>
+      </div>
+    </div>
+
+    <div class="test-grid" role="list" aria-label="Test results">
+
+      <div class="test-item pass" role="listitem"><div class="test-label">Configuration Loading</div><span class="test-badge" aria-label="Pass">PASS</span></div>
+      <div class="test-item pass" role="listitem"><div class="test-label">SMTP Connectivity</div><span class="test-badge" aria-label="Pass">PASS</span></div>
+      <div class="test-item pass" role="listitem"><div class="test-label">Agent Startup Event</div><span class="test-badge" aria-label="Pass">PASS</span></div>
+      <div class="test-item pass" role="listitem"><div class="test-label">Screen LOCK Detection</div><span class="test-badge" aria-label="Pass">PASS</span></div>
+      <div class="test-item pass" role="listitem"><div class="test-label">Screen UNLOCK Detection</div><span class="test-badge" aria-label="Pass">PASS</span></div>
+      <div class="test-item na"   role="listitem"><div class="test-label">Session Switch</div><span class="test-badge" aria-label="Not applicable">N/A</span></div>
+      <div class="test-item pass" role="listitem"><div class="test-label">Duplicate Suppression</div><span class="test-badge" aria-label="Pass">PASS</span></div>
+      <div class="test-item pass" role="listitem"><div class="test-label">Graceful Shutdown Event</div><span class="test-badge" aria-label="Pass">PASS</span></div>
+      <div class="test-item pass" role="listitem"><div class="test-label">Restart Recovery (Event 1074)</div><span class="test-badge" aria-label="Pass">PASS</span></div>
+      <div class="test-item pass" role="listitem"><div class="test-label">Shutdown Recovery (Event 6008)</div><span class="test-badge" aria-label="Pass">PASS</span></div>
+      <div class="test-item pass" role="listitem"><div class="test-label">SQLite Persistence + Logging</div><span class="test-badge" aria-label="Pass">PASS</span></div>
+      <div class="test-item pass" role="listitem"><div class="test-label">Task Scheduler Registration</div><span class="test-badge" aria-label="Pass">PASS</span></div>
+      <div class="test-item pass" role="listitem"><div class="test-label">SMTP Failure / Retry</div><span class="test-badge" aria-label="Pass">PASS</span></div>
+
+    </div>
+
+    <p class="na-note fade-up" role="note">
+      <strong>Note on Session Switch (N/A):</strong> The session-switch test was not applicable because
+      the test machine had only a single Windows user account and session. This event type
+      (WTS_CONSOLE_CONNECT / WTS_CONSOLE_DISCONNECT between two active sessions) cannot be
+      triggered in a single-user environment. All other session and system events were fully validated.
+    </p>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     DOWNLOAD
+════════════════════════════════════════ -->
+<section id="download" class="section" aria-labelledby="download-title">
+  <div class="container">
+    <div class="download-hero">
+      <p class="section-eyebrow fade-up">Get CyberWatch</p>
+      <h2 class="section-title fade-up" id="download-title">Ready to Install</h2>
+      <p class="section-subtitle fade-up">
+        One-click installer for Windows 10 and Windows 11.
+        No Python required. No administrator rights needed.
+      </p>
+
+      <div class="fade-up" style="margin-bottom:0;">
+        <a
+          href="downloads/CyberWatch-Setup.exe"
+          class="download-primary"
+          download="CyberWatch-Setup.exe"
+          id="main-download-btn"
+          data-download
+          aria-label="Download CyberWatch installer for Windows (EXE file)"
+        >
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          Download CyberWatch for Windows
+        </a>
+      </div>
+
+      <div class="download-secondary-links fade-up">
+        <a href="downloads/user-guide.html" class="btn btn-secondary" id="guide-download-btn" aria-label="Read the user guide">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/>
+          </svg>
+          User Guide
+        </a>
+        <a href="docs/index.html" class="btn btn-secondary" aria-label="View documentation">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+          </svg>
+          Documentation
+        </a>
+
+      </div>
+    </div>
+
+    <div class="download-info-panel fade-up" aria-label="System information">
+      <div class="download-info-item">
+        <div class="download-info-label">Platform</div>
+        <div class="download-info-value">Windows 10 / 11</div>
+      </div>
+      <div class="download-info-item">
+        <div class="download-info-label">Installer</div>
+        <div class="download-info-value">CyberWatch-Setup.exe</div>
+      </div>
+      <div class="download-info-item">
+        <div class="download-info-label">Installation</div>
+        <div class="download-info-value">One-click, no Admin</div>
+      </div>
+      <div class="download-info-item">
+        <div class="download-info-label">Configuration</div>
+        <div class="download-info-value">User SMTP credentials</div>
+      </div>
+      <div class="download-info-item">
+        <div class="download-info-label">Privacy</div>
+        <div class="download-info-value">No keystroke capture</div>
+      </div>
+      <div class="download-info-item">
+        <div class="download-info-label">License</div>
+        <div class="download-info-value">MIT — Personal Use</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══════════════════════════════════════
+     INSTALLATION GUIDE
+════════════════════════════════════════ -->
+<section id="installation" class="section" aria-labelledby="install-title">
+  <div class="container">
+    <p class="section-eyebrow fade-up">Setup</p>
+    <h2 class="section-title fade-up" id="install-title">Installation Guide</h2>
+    <p class="section-subtitle fade-up">
+      CyberWatch installs in under two minutes. You only need a Gmail account with
+      two-step verification to send yourself alerts.
+    </p>
+
+    <div class="install-steps" role="list">
+
+      <div class="install-step fade-up" role="listitem">
+        <div class="install-step-num" aria-hidden="true">01</div>
+        <div class="install-step-body">
+          <h3 class="install-step-title">Download CyberWatch</h3>
+          <p class="install-step-desc">
+            Click <strong>Download CyberWatch for Windows</strong> above to download
+            <strong>CyberWatch-Setup.exe</strong> — a single-file Windows installer (~9 MB).
+            No Python or additional software required.
+          </p>
+        </div>
+      </div>
+
+      <div class="install-step fade-up" role="listitem">
+        <div class="install-step-num" aria-hidden="true">02</div>
+        <div class="install-step-body">
+          <h3 class="install-step-title">Run the Installer</h3>
+          <p class="install-step-desc">
+            Double-click <strong>CyberWatch-Setup.exe</strong>. If Windows SmartScreen appears,
+            click <strong>"More info" → "Run anyway"</strong>. The installer does not require administrator rights.
+          </p>
+        </div>
+      </div>
+
+      <div class="install-step fade-up" role="listitem">
+        <div class="install-step-num" aria-hidden="true">03</div>
+        <div class="install-step-body">
+          <h3 class="install-step-title">Enter Your Notification Settings</h3>
+          <p class="install-step-desc">
+            The installer will ask for three things:
+            your <strong>recipient email address</strong> (where alerts are sent),
+            your <strong>Gmail address</strong> (the sender), and
+            your <strong>Gmail App Password</strong> (16 characters from Google Account → Security → App Passwords).
+          </p>
+          <div class="install-warning" role="note">
+            ⚠️ Your Gmail App Password is yours alone. Never share it with anyone, including the developer of this software. It is stored locally on your machine and never transmitted to any CyberWatch server.
+          </div>
+        </div>
+      </div>
+
+      <div class="install-step fade-up" role="listitem">
+        <div class="install-step-num" aria-hidden="true">04</div>
+        <div class="install-step-body">
+          <h3 class="install-step-title">Complete Installation</h3>
+          <p class="install-step-desc">
+            Click through to complete. CyberWatch is installed to
+            <code style="font-family:var(--font-mono);font-size:0.85em;color:var(--blue-300);">%LOCALAPPDATA%\Programs\CyberWatch</code>
+            and a <strong>Windows Task Scheduler task</strong> (<code style="font-family:var(--font-mono);font-size:0.85em;color:var(--blue-300);">CyberWatch_Agent</code>)
+            is created automatically. Start Menu shortcuts are added for Configure, Test Email, and View Logs.
+          </p>
+        </div>
+      </div>
+
+      <div class="install-step fade-up" role="listitem">
+        <div class="install-step-num" aria-hidden="true">05</div>
+        <div class="install-step-body">
+          <h3 class="install-step-title">Send a Test Email</h3>
+          <p class="install-step-desc">
+            At the end of installation, tick <strong>"Send a test notification email now"</strong>
+            to verify your SMTP credentials are working. Check your inbox for a test alert.
+            If no email arrives, use <strong>Start Menu → CyberWatch → Test Email Notification</strong>
+            and check the log at <strong>Start Menu → CyberWatch → View Logs</strong>.
+          </p>
+        </div>
+      </div>
+
+      <div class="install-step fade-up" role="listitem">
+        <div class="install-step-num" aria-hidden="true">06</div>
+        <div class="install-step-body">
+          <h3 class="install-step-title">You're Done</h3>
+          <p class="install-step-desc">
+            CyberWatch runs automatically every time you log in to Windows. Lock your screen — you'll receive an alert.
+            Unlock it — another alert. The agent runs silently in the background with no visible window.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+
+<!-- ═══════════════════════════════════════
+     FOOTER
+════════════════════════════════════════ -->
+<footer role="contentinfo">
+  <div class="container">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand">
+          <div class="nav-logo-icon" aria-hidden="true" style="width:28px;height:28px;border-radius:7px;">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+            </svg>
+          </div>
+          CyberWatch
+        </div>
+        <p class="footer-desc">
+          Personal Windows Security Monitor. Open source, privacy-first,
+          zero cloud dependency. MIT License.
+        </p>
+      </div>
+      <div>
+        <div class="footer-links">
+          <a href="#features"     class="footer-link">Features</a>
+          <a href="#security"     class="footer-link">Privacy</a>
+          <a href="#download"     class="footer-link">Download</a>
+          <a href="docs/index.html" class="footer-link">Docs</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>CyberWatch — Personal Windows Security Monitor &nbsp;·&nbsp; MIT License &nbsp;·&nbsp; No keystrokes, passwords, or personal data were captured in the making of this website.</p>
+    </div>
+  </div>
+</footer>
+
+
+<!-- ═══════════════════════════════════════
+     SCRIPTS
+════════════════════════════════════════ -->
+<!-- Three.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" crossorigin="anonymous"></script>
+<!-- GSAP + ScrollTrigger -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" crossorigin="anonymous"></script>
+<!-- Lenis smooth scroll -->
+<script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.28/bundled/lenis.min.js" crossorigin="anonymous"></script>
+
+<script src="js/main.js"></script>
+
+</body>
+</html>

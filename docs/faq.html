@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CyberWatch FAQ — Frequently asked questions about privacy, compatibility, email setup, and how CyberWatch works." />
+  <title>FAQ — CyberWatch Docs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%233b82f6'/><path d='M16 6 L24 10 L24 18 C24 22 20 25.5 16 27 C12 25.5 8 22 8 18 L8 10 Z' fill='white' opacity='0.9'/><circle cx='16' cy='18' r='3' fill='%233b82f6'/></svg>" />
+  <style>
+    details {
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      margin-bottom: 0.75rem;
+      overflow: hidden;
+      transition: border-color 0.2s;
+    }
+    details[open] {
+      border-color: var(--border-accent);
+    }
+    summary {
+      padding: 1.25rem 1.5rem;
+      font-size: 0.9375rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      transition: background 0.15s;
+      user-select: none;
+    }
+    summary:hover { background: rgba(255,255,255,0.03); }
+    summary::-webkit-details-marker { display: none; }
+    summary::after {
+      content: '+';
+      font-size: 1.25rem;
+      color: var(--accent);
+      flex-shrink: 0;
+      transition: transform 0.25s;
+    }
+    details[open] summary::after {
+      transform: rotate(45deg);
+    }
+    details[open] summary {
+      border-bottom: 1px solid var(--border-subtle);
+      background: rgba(59,130,246,0.03);
+    }
+    .faq-answer {
+      padding: 1.25rem 1.5rem;
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+    .faq-answer p { margin-bottom: 0.75rem; }
+    .faq-answer p:last-child { margin-bottom: 0; }
+    .faq-answer ul { list-style: disc; padding-left: 1.5rem; }
+    .faq-answer li { margin-bottom: 0.4rem; }
+    .faq-answer code {
+      font-family: var(--font-mono);
+      font-size: 0.85em;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid var(--border-low);
+      padding: 0.15em 0.5em;
+      border-radius: 4px;
+      color: var(--blue-300);
+    }
+  </style>
+</head>
+<body>
+<header id="navbar" role="banner">
+  <div class="nav-shell">
+
+    <!-- LEFT: Logo -->
+    <a href="../index.html" class="nav-logo" aria-label="CyberWatch home">
+      <div class="nav-logo-mark" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+      </div>
+      <span class="nav-logo-text">CyberWatch</span>
+      <span class="nav-logo-tag">v1.0</span>
+    </a>
+
+    <!-- CENTER: Pill navigation -->
+    <nav class="nav-pill" aria-label="Main navigation">
+      <ul class="nav-pill-links" role="list">
+        <li><a href="../index.html#features"      class="nav-pill-link" data-label="Features">Features</a></li>
+        <li><a href="../index.html#how-it-works"  class="nav-pill-link" data-label="Architecture">How it works</a></li>
+        <li><a href="../index.html#security"      class="nav-pill-link" data-label="Privacy">Privacy</a></li>
+        <li><a href="../index.html#validation"    class="nav-pill-link" data-label="Tests">Testing</a></li>
+        <li><a href="index.html" class="nav-pill-link active" data-label="Docs">Docs</a></li>
+      </ul>
+    </nav>
+
+    <!-- RIGHT: Actions -->
+    <div class="nav-actions">
+
+      <a
+        href="../downloads/CyberWatch-Setup.exe"
+        class="nav-dl-btn"
+        download="CyberWatch-Setup.exe"
+        id="nav-download-btn"
+        data-download
+        aria-label="Download CyberWatch for Windows"
+      >
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        <span>Download</span>
+      </a>
+
+      <!-- Mobile menu button -->
+      <button
+        id="mobile-menu-btn"
+        class="nav-mobile-btn"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+  </div>
+</header>
+
+<!-- Mobile drawer -->
+<nav id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation" aria-hidden="true">
+  <a href="../index.html#features"      class="nav-pill-link">Features</a>
+  <a href="../index.html#how-it-works"  class="nav-pill-link">How it works</a>
+  <a href="../index.html#security"      class="nav-pill-link">Privacy</a>
+  <a href="../index.html#validation"    class="nav-pill-link">Testing</a>
+  <a href="../index.html#download"      class="nav-pill-link">Download</a>
+  <a href="index.html" class="nav-pill-link active">Documentation</a>
+  <div class="mobile-menu-ctas">
+    <a href="../downloads/CyberWatch-Setup.exe" download="CyberWatch-Setup.exe" class="nav-dl-btn" style="justify-content:center;padding:0.7rem 1.25rem;">Download CyberWatch</a>
+  </div>
+</nav>
+<main style="padding-top: var(--nav-height);">
+  <div class="container">
+    <div class="docs-layout">
+
+      <aside class="docs-sidebar" aria-label="Documentation navigation">
+        <div class="docs-sidebar-group">
+          <div class="docs-sidebar-group-title">Guides</div>
+          <a href="installation.html" class="docs-sidebar-link">Installation</a>
+          <a href="configuration.html" class="docs-sidebar-link">Configuration</a>
+          <a href="privacy.html" class="docs-sidebar-link">Privacy</a>
+          <a href="troubleshooting.html" class="docs-sidebar-link">Troubleshooting</a>
+          <a href="faq.html" class="docs-sidebar-link active" aria-current="page">FAQ</a>
+        </div>
+      </aside>
+
+      <article class="docs-content" aria-labelledby="page-title">
+
+        <h1 id="page-title">Frequently Asked Questions</h1>
+        <p>Answers to the most common questions about CyberWatch.</p>
+
+        <h2 id="privacy-faq">Privacy &amp; Safety</h2>
+
+        <details>
+          <summary>Does CyberWatch spy on me?</summary>
+          <div class="faq-answer">
+            <p>No. CyberWatch monitors only operating system–level session events (lock, unlock, logon, logoff, shutdown, restart). It does not access any user content, keystrokes, passwords, files, browser history, webcam, microphone, or clipboard.</p>
+            <p>All source code is available on GitHub for independent verification.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Is my email password stored safely?</summary>
+          <div class="faq-answer">
+            <p>CyberWatch stores your Gmail App Password in a local <code>.env</code> file protected by Windows file permissions (owner-only read/write). It is never written to log files and never transmitted to any server except Gmail's SMTP server (<code>smtp.gmail.com:587</code>) over an encrypted TLS connection.</p>
+            <p>You should use a Gmail App Password — not your regular Gmail password. App Passwords can be revoked independently without affecting your Google account login.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Does CyberWatch send my data anywhere?</summary>
+          <div class="faq-answer">
+            <p>The only outbound network connection CyberWatch makes is to Gmail's SMTP server to deliver email alerts to your own inbox. No data is sent to the developer, no analytics are collected, and there is no cloud telemetry of any kind.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Can I install CyberWatch on someone else's computer?</summary>
+          <div class="faq-answer">
+            <p>CyberWatch is designed for personal use on your own device. If you install it on a device you do not own, you are responsible for ensuring you have appropriate legal authorisation to run monitoring software on that device. CyberWatch was not built for surveillance of other people's computers.</p>
+          </div>
+        </details>
+
+        <h2 id="email-faq">Email &amp; SMTP</h2>
+
+        <details>
+          <summary>Do I need a Gmail account?</summary>
+          <div class="faq-answer">
+            <p>Gmail is the recommended and tested email provider. CyberWatch uses standard SMTP with STARTTLS, which is supported by most email providers. If you want to use a different provider, you can edit the <code>SMTP_HOST</code>, <code>SMTP_PORT</code>, and related settings in the <code>.env</code> configuration file after installation.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>What is a Gmail App Password and why do I need it?</summary>
+          <div class="faq-answer">
+            <p>Google requires App Passwords for third-party applications that send email via SMTP when 2-Step Verification is enabled. An App Password is a 16-character code that grants permission to send email from your account — without exposing your regular Google password.</p>
+            <p>App Passwords can be created and revoked independently at <code>myaccount.google.com/apppasswords</code>.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>The notification email goes to my spam folder. How do I fix this?</summary>
+          <div class="faq-answer">
+            <p>Open the notification email in your inbox, click the three-dot menu, and select "Not spam" or "Move to inbox". Gmail will learn from this action and future alerts should arrive in your inbox.</p>
+            <p>Alternatively, create a Gmail filter to always deliver emails from your sender address to your inbox.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Can I send alerts to a different email address than the one sending them?</summary>
+          <div class="faq-answer">
+            <p>Yes. The <strong>Notification Recipient Email</strong> (where alerts are delivered) can be different from the <strong>SMTP User / Gmail Address</strong> (which sends the alerts). For example, you can send from <code>myalerts@gmail.com</code> to <code>my.phone@carrier.com</code>.</p>
+          </div>
+        </details>
+
+        <h2 id="technical-faq">Technical</h2>
+
+        <details>
+          <summary>Does CyberWatch require administrator rights?</summary>
+          <div class="faq-answer">
+            <p>No. CyberWatch installs to your user profile folder (<code>%LOCALAPPDATA%\Programs\CyberWatch</code>) without requiring administrator rights. The Task Scheduler task runs as your own user account, not as SYSTEM or Administrator.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Will CyberWatch slow down my computer?</summary>
+          <div class="faq-answer">
+            <p>CyberWatch is a lightweight background process. It uses event-driven architecture (waiting for Windows notifications) rather than polling, which means it consumes essentially no CPU when idle. Memory usage is minimal. It should have no noticeable impact on system performance.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>What Windows versions are supported?</summary>
+          <div class="faq-answer">
+            <p>CyberWatch has been validated on Windows 10 and Windows 11. It is not tested on Windows 7, Windows 8, or Windows Server. It is not designed for macOS or Linux.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Does CyberWatch need Python installed?</summary>
+          <div class="faq-answer">
+            <p>No. The distributed <code>CyberWatch-Setup.exe</code> is a fully self-contained installer built with PyInstaller and Inno Setup. It bundles the Python runtime and all dependencies. No separate Python installation is required.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>How do I update CyberWatch?</summary>
+          <div class="faq-answer">
+            <p>Uninstall the current version via Windows Settings → Apps → CyberWatch → Uninstall, then install the new version. Your configuration is removed with the uninstaller, so you'll need to re-enter your email and App Password during reinstallation.</p>
+          </div>
+        </details>
+
+        <details>
+          <summary>Where are the log files?</summary>
+          <div class="faq-answer">
+            <p>Log files are located at:</p>
+            <p><code>%LOCALAPPDATA%\Programs\CyberWatch\logs\cyberwatch.log</code></p>
+            <p>The log rotates automatically to prevent excessive disk usage. You can also open it directly from <strong>Start → CyberWatch → View Logs</strong>.</p>
+          </div>
+        </details>
+
+        <div style="margin-top: 2.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+          <a href="index.html" class="btn btn-secondary">← All Docs</a>
+          <a href="../index.html#download" class="btn btn-primary">Download CyberWatch</a>
+        </div>
+
+      </article>
+    </div>
+  </div>
+</main>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+</script>
+</body>
+</html>

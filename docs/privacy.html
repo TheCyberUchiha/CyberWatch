@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CyberWatch Privacy Guide — Exactly what CyberWatch monitors and what it does not capture, collect, or transmit." />
+  <title>Privacy Guide — CyberWatch Docs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%233b82f6'/><path d='M16 6 L24 10 L24 18 C24 22 20 25.5 16 27 C12 25.5 8 22 8 18 L8 10 Z' fill='white' opacity='0.9'/><circle cx='16' cy='18' r='3' fill='%233b82f6'/></svg>" />
+</head>
+<body>
+<header id="navbar" role="banner">
+  <div class="nav-shell">
+
+    <!-- LEFT: Logo -->
+    <a href="../index.html" class="nav-logo" aria-label="CyberWatch home">
+      <div class="nav-logo-mark" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+      </div>
+      <span class="nav-logo-text">CyberWatch</span>
+      <span class="nav-logo-tag">v1.0</span>
+    </a>
+
+    <!-- CENTER: Pill navigation -->
+    <nav class="nav-pill" aria-label="Main navigation">
+      <ul class="nav-pill-links" role="list">
+        <li><a href="../index.html#features"      class="nav-pill-link" data-label="Features">Features</a></li>
+        <li><a href="../index.html#how-it-works"  class="nav-pill-link" data-label="Architecture">How it works</a></li>
+        <li><a href="../index.html#security"      class="nav-pill-link" data-label="Privacy">Privacy</a></li>
+        <li><a href="../index.html#validation"    class="nav-pill-link" data-label="Tests">Testing</a></li>
+        <li><a href="index.html" class="nav-pill-link active" data-label="Docs">Docs</a></li>
+      </ul>
+    </nav>
+
+    <!-- RIGHT: Actions -->
+    <div class="nav-actions">
+
+      <a
+        href="../downloads/CyberWatch-Setup.exe"
+        class="nav-dl-btn"
+        download="CyberWatch-Setup.exe"
+        id="nav-download-btn"
+        data-download
+        aria-label="Download CyberWatch for Windows"
+      >
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        <span>Download</span>
+      </a>
+
+      <!-- Mobile menu button -->
+      <button
+        id="mobile-menu-btn"
+        class="nav-mobile-btn"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+  </div>
+</header>
+
+<!-- Mobile drawer -->
+<nav id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation" aria-hidden="true">
+  <a href="../index.html#features"      class="nav-pill-link">Features</a>
+  <a href="../index.html#how-it-works"  class="nav-pill-link">How it works</a>
+  <a href="../index.html#security"      class="nav-pill-link">Privacy</a>
+  <a href="../index.html#validation"    class="nav-pill-link">Testing</a>
+  <a href="../index.html#download"      class="nav-pill-link">Download</a>
+  <a href="index.html" class="nav-pill-link active">Documentation</a>
+  <div class="mobile-menu-ctas">
+    <a href="../downloads/CyberWatch-Setup.exe" download="CyberWatch-Setup.exe" class="nav-dl-btn" style="justify-content:center;padding:0.7rem 1.25rem;">Download CyberWatch</a>
+  </div>
+</nav>
+<main style="padding-top: var(--nav-height);">
+  <div class="container">
+    <div class="docs-layout">
+
+      <aside class="docs-sidebar" aria-label="Documentation navigation">
+        <div class="docs-sidebar-group">
+          <div class="docs-sidebar-group-title">Guides</div>
+          <a href="installation.html" class="docs-sidebar-link">Installation</a>
+          <a href="configuration.html" class="docs-sidebar-link">Configuration</a>
+          <a href="privacy.html" class="docs-sidebar-link active" aria-current="page">Privacy</a>
+          <a href="troubleshooting.html" class="docs-sidebar-link">Troubleshooting</a>
+          <a href="faq.html" class="docs-sidebar-link">FAQ</a>
+        </div>
+      </aside>
+
+      <article class="docs-content" aria-labelledby="page-title">
+
+        <h1 id="page-title">Privacy Guide</h1>
+        <p>CyberWatch is designed specifically around <em>session event monitoring</em>, not content surveillance. This page documents exactly what data CyberWatch captures, where it goes, and what it explicitly never touches.</p>
+
+        <h2 id="what-cw-monitors">What CyberWatch Monitors</h2>
+        <p>CyberWatch listens to two Windows subsystems:</p>
+
+        <h3>1. WTS (Windows Terminal Services) Session Notifications</h3>
+        <p>These are operating system–level signals that Windows itself generates for session state changes. CyberWatch receives the same signals Windows uses for its own session management:</p>
+        <ul>
+          <li><strong>WTS_SESSION_LOCK</strong> — screen lock event</li>
+          <li><strong>WTS_SESSION_UNLOCK</strong> — screen unlock event</li>
+          <li><strong>WTS_SESSION_LOGON</strong> — user logon</li>
+          <li><strong>WTS_SESSION_LOGOFF</strong> — user logoff</li>
+        </ul>
+        <p>These events contain a session ID and timestamp only. They do not contain any user content, files, or activity data.</p>
+
+        <h3>2. Windows Event Log</h3>
+        <p>CyberWatch reads two specific Event IDs from the Windows System log at startup:</p>
+        <ul>
+          <li><strong>Event ID 1074</strong> — initiated shutdown or restart (contains initiator process name and reason code)</li>
+          <li><strong>Event ID 6008</strong> — unexpected power-off detected on the previous boot</li>
+        </ul>
+        <p>These are standard Windows audit events. CyberWatch reads only the timestamp and event description — no user data is involved.</p>
+
+        <h2 id="what-cw-does-not-do">What CyberWatch Does NOT Capture</h2>
+        <p>The following are explicitly excluded from CyberWatch's design and implementation:</p>
+
+        <ul>
+          <li><strong>No keystroke logging.</strong> CyberWatch registers no keyboard hooks and captures no keyboard input.</li>
+          <li><strong>No password capture.</strong> CyberWatch does not hook Windows credential providers or authentication APIs.</li>
+          <li><strong>No clipboard access.</strong> CyberWatch does not read from or write to the Windows clipboard.</li>
+          <li><strong>No screen capture or screenshots.</strong> CyberWatch makes no graphics API calls related to screen content.</li>
+          <li><strong>No browser history or URL tracking.</strong> CyberWatch does not access browser storage, process memory, or network traffic.</li>
+          <li><strong>No webcam or microphone access.</strong> CyberWatch registers no media capture devices.</li>
+          <li><strong>No file system scanning.</strong> CyberWatch does not scan, read, or index user files.</li>
+          <li><strong>No process enumeration.</strong> CyberWatch does not enumerate or inspect running processes.</li>
+          <li><strong>No network traffic inspection.</strong> CyberWatch makes a single outbound connection — to your SMTP server — to deliver email alerts.</li>
+          <li><strong>No cloud telemetry.</strong> CyberWatch does not send usage data, crash reports, or analytics to any server.</li>
+        </ul>
+
+        <h2 id="data-storage">Where Data Is Stored</h2>
+        <p>CyberWatch stores two types of data, both exclusively on your local machine:</p>
+
+        <h3>SQLite Event Database</h3>
+        <p>Located at <code>%LOCALAPPDATA%\Programs\CyberWatch\data\cyberwatch.db</code>. Contains a record of each detected security event: type, timestamp, and session ID. No personal content.</p>
+
+        <h3>Application Log</h3>
+        <p>Located at <code>%LOCALAPPDATA%\Programs\CyberWatch\logs\cyberwatch.log</code>. Contains rotating log entries of agent activity. SMTP credentials are never written to logs.</p>
+
+        <h2 id="credentials">SMTP Credential Handling</h2>
+        <p>CyberWatch requires your Gmail App Password to send alerts. This credential:</p>
+        <ul>
+          <li>Is stored in a <code>.env</code> file in the installation directory.</li>
+          <li>Has Windows file permissions set to owner-only read/write (via <code>icacls</code>).</li>
+          <li>Is never written to log files in any form.</li>
+          <li>Is never transmitted to any server except Gmail's SMTP server (<code>smtp.gmail.com:587</code>) over an encrypted STARTTLS connection.</li>
+          <li>Is never sent to the developer or any third party.</li>
+        </ul>
+
+        <div class="docs-callout danger">
+          <strong>Your App Password belongs to you.</strong> Never share it with anyone — including the developer of this software. If you believe your App Password has been compromised, revoke it immediately at <a href="https://myaccount.google.com/apppasswords" target="_blank" rel="noopener noreferrer" style="color:inherit; text-decoration:underline;">myaccount.google.com/apppasswords</a> and create a new one.
+        </div>
+
+        <h2 id="open-source">Open Source Verification</h2>
+        <p>Because CyberWatch is open source, you can verify everything stated on this page by reading the source code directly:</p>
+        <ul>
+          <li><code>cyberwatch/collectors/</code> — the event collectors. Confirm what APIs are used.</li>
+          <li><code>cyberwatch/notifications/email_notifier.py</code> — SMTP logic. Confirm what is transmitted.</li>
+          <li><code>cyberwatch/storage/db_manager.py</code> — database writes. Confirm what is stored.</li>
+          <li><code>cyberwatch/config.py</code> — credential loading. Confirm how credentials are handled.</li>
+        </ul>
+        <p>View the full source on .</p>
+
+        <h2 id="limitations">Limitations and Scope</h2>
+        <p>CyberWatch was built for personal use on your own device. It is not a commercial product and carries no formal security certification or compliance guarantee. It is provided under the MIT License for personal use on your own machine.</p>
+        <p>If you are installing CyberWatch on a device you do not own, you are responsible for ensuring you have appropriate authorisation to run monitoring software on that device.</p>
+
+        <div style="margin-top: 2.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+          <a href="troubleshooting.html" class="btn btn-primary">Troubleshooting →</a>
+          <a href="configuration.html" class="btn btn-secondary">← Configuration</a>
+        </div>
+
+      </article>
+    </div>
+  </div>
+</main>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+</script>
+</body>
+</html>

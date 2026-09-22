@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CyberWatch Configuration Guide — SMTP setup, Gmail App Password, notification settings, and advanced configuration." />
+  <title>Configuration Guide — CyberWatch Docs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%233b82f6'/><path d='M16 6 L24 10 L24 18 C24 22 20 25.5 16 27 C12 25.5 8 22 8 18 L8 10 Z' fill='white' opacity='0.9'/><circle cx='16' cy='18' r='3' fill='%233b82f6'/></svg>" />
+</head>
+<body>
+<header id="navbar" role="banner">
+  <div class="nav-shell">
+
+    <!-- LEFT: Logo -->
+    <a href="../index.html" class="nav-logo" aria-label="CyberWatch home">
+      <div class="nav-logo-mark" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+      </div>
+      <span class="nav-logo-text">CyberWatch</span>
+      <span class="nav-logo-tag">v1.0</span>
+    </a>
+
+    <!-- CENTER: Pill navigation -->
+    <nav class="nav-pill" aria-label="Main navigation">
+      <ul class="nav-pill-links" role="list">
+        <li><a href="../index.html#features"      class="nav-pill-link" data-label="Features">Features</a></li>
+        <li><a href="../index.html#how-it-works"  class="nav-pill-link" data-label="Architecture">How it works</a></li>
+        <li><a href="../index.html#security"      class="nav-pill-link" data-label="Privacy">Privacy</a></li>
+        <li><a href="../index.html#validation"    class="nav-pill-link" data-label="Tests">Testing</a></li>
+        <li><a href="index.html" class="nav-pill-link active" data-label="Docs">Docs</a></li>
+      </ul>
+    </nav>
+
+    <!-- RIGHT: Actions -->
+    <div class="nav-actions">
+
+      <a
+        href="../downloads/CyberWatch-Setup.exe"
+        class="nav-dl-btn"
+        download="CyberWatch-Setup.exe"
+        id="nav-download-btn"
+        data-download
+        aria-label="Download CyberWatch for Windows"
+      >
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        <span>Download</span>
+      </a>
+
+      <!-- Mobile menu button -->
+      <button
+        id="mobile-menu-btn"
+        class="nav-mobile-btn"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+  </div>
+</header>
+
+<!-- Mobile drawer -->
+<nav id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation" aria-hidden="true">
+  <a href="../index.html#features"      class="nav-pill-link">Features</a>
+  <a href="../index.html#how-it-works"  class="nav-pill-link">How it works</a>
+  <a href="../index.html#security"      class="nav-pill-link">Privacy</a>
+  <a href="../index.html#validation"    class="nav-pill-link">Testing</a>
+  <a href="../index.html#download"      class="nav-pill-link">Download</a>
+  <a href="index.html" class="nav-pill-link active">Documentation</a>
+  <div class="mobile-menu-ctas">
+    <a href="../downloads/CyberWatch-Setup.exe" download="CyberWatch-Setup.exe" class="nav-dl-btn" style="justify-content:center;padding:0.7rem 1.25rem;">Download CyberWatch</a>
+  </div>
+</nav>
+<main style="padding-top: var(--nav-height);">
+  <div class="container">
+    <div class="docs-layout">
+
+      <aside class="docs-sidebar" aria-label="Documentation navigation">
+        <div class="docs-sidebar-group">
+          <div class="docs-sidebar-group-title">Guides</div>
+          <a href="installation.html" class="docs-sidebar-link">Installation</a>
+          <a href="configuration.html" class="docs-sidebar-link active" aria-current="page">Configuration</a>
+          <a href="privacy.html" class="docs-sidebar-link">Privacy</a>
+          <a href="troubleshooting.html" class="docs-sidebar-link">Troubleshooting</a>
+          <a href="faq.html" class="docs-sidebar-link">FAQ</a>
+        </div>
+        <div class="docs-sidebar-group">
+          <div class="docs-sidebar-group-title">Downloads</div>
+          <a href="../../distribution/CyberWatch-Setup.exe" class="docs-sidebar-link" download="CyberWatch-Setup.exe">CyberWatch-Setup.exe</a>
+          <a href="../downloads/user-guide.html" class="docs-sidebar-link">User Guide</a>
+        </div>
+      </aside>
+
+      <article class="docs-content" aria-labelledby="page-title">
+
+        <h1 id="page-title">Configuration Guide</h1>
+        <p>This guide covers SMTP configuration, Gmail App Password setup, and the available advanced settings you can adjust after installation.</p>
+
+        <h2 id="gmail-app-password">Gmail App Password Setup</h2>
+        <p>CyberWatch uses standard SMTP with STARTTLS to send email alerts. Gmail requires an App Password — a 16-character dedicated credential — because CyberWatch is a non-browser app.</p>
+
+        <h3>Requirements</h3>
+        <ul>
+          <li>A Gmail account (any personal Gmail address).</li>
+          <li><strong>2-Step Verification must be enabled</strong> on your Google Account. Without 2FA, App Passwords are not available.</li>
+        </ul>
+
+        <h3>Creating an App Password</h3>
+        <ol>
+          <li>Go to <a href="https://myaccount.google.com/security" target="_blank" rel="noopener noreferrer" style="color:var(--accent);">Google Account → Security</a>.</li>
+          <li>Confirm that <strong>2-Step Verification</strong> is enabled.</li>
+          <li>Navigate to <a href="https://myaccount.google.com/apppasswords" target="_blank" rel="noopener noreferrer" style="color:var(--accent);">App Passwords</a>.</li>
+          <li>Enter a name like <code>CyberWatch</code> and click <strong>Create</strong>.</li>
+          <li>Copy the displayed 16-character password.</li>
+        </ol>
+
+        <div class="docs-callout danger">
+          <strong>Security reminder:</strong> Your Gmail App Password gives access to send email from your account. Never share it with anyone. Never paste it into a public forum, chat, or issue tracker. CyberWatch stores it locally, protected by Windows file permissions.
+        </div>
+
+        <h2 id="reconfigure">Re-configuring After Installation</h2>
+        <p>If you need to update your notification email or App Password after installation, use any of these methods:</p>
+
+        <h3>Option A — Start Menu</h3>
+        <p>Open <strong>Start → CyberWatch → Configure CyberWatch</strong>. The configuration wizard reopens and you can update any field.</p>
+
+        <h3>Option B — Command Line</h3>
+        <pre><code>cd "%LOCALAPPDATA%\Programs\CyberWatch"
+cyberwatch_cli.exe configure</code></pre>
+
+        <h3>Option C — Silent Update</h3>
+        <pre><code>cyberwatch_cli.exe configure --email "alerts@example.com" --smtp-user "sender@gmail.com" --smtp-pass "abcdefghijklmnop"</code></pre>
+
+        <h2 id="test-email">Sending a Test Email</h2>
+        <p>To verify your SMTP configuration at any time:</p>
+        <pre><code>cyberwatch_cli.exe test-email</code></pre>
+        <p>Or use <strong>Start → CyberWatch → Test Email Notification</strong>.</p>
+
+        <h2 id="advanced">Advanced Settings</h2>
+        <p>All settings are stored in a <code>.env</code> file in the installation directory. You can edit them with any text editor. Below is the complete configuration reference.</p>
+
+        <div class="docs-callout warning">
+          <strong>Caution:</strong> Edit the <code>.env</code> file only if you understand what you're changing. Incorrect SMTP settings will prevent email delivery.
+        </div>
+
+        <table style="width:100%; border-collapse:collapse; font-size:0.875rem; margin: 1.5rem 0;">
+          <thead>
+            <tr style="border-bottom: 1px solid var(--border-low);">
+              <th style="text-align:left; padding: 0.75rem 0.5rem; color: var(--text-tertiary); font-weight:600; letter-spacing:0.05em; text-transform:uppercase; font-size:0.75rem;">Key</th>
+              <th style="text-align:left; padding: 0.75rem 0.5rem; color: var(--text-tertiary); font-weight:600; letter-spacing:0.05em; text-transform:uppercase; font-size:0.75rem;">Default</th>
+              <th style="text-align:left; padding: 0.75rem 0.5rem; color: var(--text-tertiary); font-weight:600; letter-spacing:0.05em; text-transform:uppercase; font-size:0.75rem;">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid var(--border-subtle);">
+              <td style="padding:0.75rem 0.5rem;"><code>SMTP_HOST</code></td>
+              <td style="padding:0.75rem 0.5rem; color:var(--text-tertiary);">—</td>
+              <td style="padding:0.75rem 0.5rem; color:var(--text-secondary);">SMTP server hostname (e.g. <code>smtp.gmail.com</code>)</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border-subtle);">
+              <td style="padding:0.75rem 0.5rem;"><code>SMTP_PORT</code></td>
+              <td style="padding:0.75rem 0.5rem; color:var(--text-tertiary);">587</td>
+              <td style="padding:0.75rem 0.5rem; color:var(--text-secondary);">587 for STARTTLS, 465 for SSL</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border-subtle);">
+              <td style="padding:0.75rem 0.5rem;"><code>SMTP_USE_TLS</code></td>
+              <td style="padding:0.75rem 0.5rem; color:var(--text-tertiary);">true</td>
+              <td style="padding:0.75rem 0.5rem; color:var(--text-secondary);">Use STARTTLS encryption</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border-subtle);">
+              <td style="padding:0.75rem 0.5rem;"><code>SMTP_USER</code></td>
+              <td style="padding:0.75rem 0.5rem; color:var(--text-tertiary);">—</td>
+              <td style="padding:0.75rem 0.5rem; color:var(--text-secondary);">Sender Gmail address</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border-subtle);">
+              <td style="padding:0.75rem 0.5rem;"><code>SMTP_PASSWORD</code></td>
+              <td style="padding:0.75rem 0.5rem; color:var(--text-tertiary);">—</td>
+              <td style="padding:0.75rem 0.5rem; color:var(--text-secondary);">Gmail App Password (16 chars)</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border-subtle);">
+              <td style="padding:0.75rem 0.5rem;"><code>NOTIFY_EMAIL</code></td>
+              <td style="padding:0.75rem 0.5rem; color:var(--text-tertiary);">—</td>
+              <td style="padding:0.75rem 0.5rem; color:var(--text-secondary);">Recipient email for alerts</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border-subtle);">
+              <td style="padding:0.75rem 0.5rem;"><code>DEDUP_WINDOW_SECONDS</code></td>
+              <td style="padding:0.75rem 0.5rem; color:var(--text-tertiary);">60</td>
+              <td style="padding:0.75rem 0.5rem; color:var(--text-secondary);">Suppress duplicate events within this window</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border-subtle);">
+              <td style="padding:0.75rem 0.5rem;"><code>EMAIL_COOLDOWN_SECONDS</code></td>
+              <td style="padding:0.75rem 0.5rem; color:var(--text-tertiary);">30</td>
+              <td style="padding:0.75rem 0.5rem; color:var(--text-secondary);">Minimum gap between same-type emails</td>
+            </tr>
+            <tr style="border-bottom:1px solid var(--border-subtle);">
+              <td style="padding:0.75rem 0.5rem;"><code>EMAIL_RETRY_MAX</code></td>
+              <td style="padding:0.75rem 0.5rem; color:var(--text-tertiary);">3</td>
+              <td style="padding:0.75rem 0.5rem; color:var(--text-secondary);">SMTP retry attempts per event</td>
+            </tr>
+            <tr>
+              <td style="padding:0.75rem 0.5rem;"><code>LOG_LEVEL</code></td>
+              <td style="padding:0.75rem 0.5rem; color:var(--text-tertiary);">INFO</td>
+              <td style="padding:0.75rem 0.5rem; color:var(--text-secondary);">Logging verbosity (DEBUG, INFO, WARNING, ERROR)</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2 id="task-scheduler">Windows Task Scheduler</h2>
+        <p>CyberWatch registers itself as a Task Scheduler task named <code>CyberWatch_Agent</code> with an <strong>At Logon</strong> trigger. You can manage it with:</p>
+        <pre><code># Check status
+schtasks /Query /TN CyberWatch_Agent /FO LIST
+
+# Start manually
+schtasks /Run /TN CyberWatch_Agent
+
+# Stop
+schtasks /End /TN CyberWatch_Agent</code></pre>
+
+        <div style="margin-top: 2.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+          <a href="privacy.html" class="btn btn-primary">Privacy Guide →</a>
+          <a href="installation.html" class="btn btn-secondary">← Installation Guide</a>
+        </div>
+
+      </article>
+    </div>
+  </div>
+</main>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+</script>
+</body>
+</html>

@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="CyberWatch Installation Guide — Step-by-step instructions for installing CyberWatch on Windows 10 and Windows 11." />
+  <title>Installation Guide — CyberWatch Docs</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%233b82f6'/><path d='M16 6 L24 10 L24 18 C24 22 20 25.5 16 27 C12 25.5 8 22 8 18 L8 10 Z' fill='white' opacity='0.9'/><circle cx='16' cy='18' r='3' fill='%233b82f6'/></svg>" />
+</head>
+<body>
+<header id="navbar" role="banner">
+  <div class="nav-shell">
+
+    <!-- LEFT: Logo -->
+    <a href="../index.html" class="nav-logo" aria-label="CyberWatch home">
+      <div class="nav-logo-mark" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+      </div>
+      <span class="nav-logo-text">CyberWatch</span>
+      <span class="nav-logo-tag">v1.0</span>
+    </a>
+
+    <!-- CENTER: Pill navigation -->
+    <nav class="nav-pill" aria-label="Main navigation">
+      <ul class="nav-pill-links" role="list">
+        <li><a href="../index.html#features"      class="nav-pill-link" data-label="Features">Features</a></li>
+        <li><a href="../index.html#how-it-works"  class="nav-pill-link" data-label="Architecture">How it works</a></li>
+        <li><a href="../index.html#security"      class="nav-pill-link" data-label="Privacy">Privacy</a></li>
+        <li><a href="../index.html#validation"    class="nav-pill-link" data-label="Tests">Testing</a></li>
+        <li><a href="index.html" class="nav-pill-link active" data-label="Docs">Docs</a></li>
+      </ul>
+    </nav>
+
+    <!-- RIGHT: Actions -->
+    <div class="nav-actions">
+
+      <a
+        href="../downloads/CyberWatch-Setup.exe"
+        class="nav-dl-btn"
+        download="CyberWatch-Setup.exe"
+        id="nav-download-btn"
+        data-download
+        aria-label="Download CyberWatch for Windows"
+      >
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+        <span>Download</span>
+      </a>
+
+      <!-- Mobile menu button -->
+      <button
+        id="mobile-menu-btn"
+        class="nav-mobile-btn"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+  </div>
+</header>
+
+<!-- Mobile drawer -->
+<nav id="mobile-menu" class="mobile-menu" aria-label="Mobile navigation" aria-hidden="true">
+  <a href="../index.html#features"      class="nav-pill-link">Features</a>
+  <a href="../index.html#how-it-works"  class="nav-pill-link">How it works</a>
+  <a href="../index.html#security"      class="nav-pill-link">Privacy</a>
+  <a href="../index.html#validation"    class="nav-pill-link">Testing</a>
+  <a href="../index.html#download"      class="nav-pill-link">Download</a>
+  <a href="index.html" class="nav-pill-link active">Documentation</a>
+  <div class="mobile-menu-ctas">
+    <a href="../downloads/CyberWatch-Setup.exe" download="CyberWatch-Setup.exe" class="nav-dl-btn" style="justify-content:center;padding:0.7rem 1.25rem;">Download CyberWatch</a>
+  </div>
+</nav>
+<main style="padding-top: var(--nav-height);">
+  <div class="container">
+    <div class="docs-layout">
+
+      <!-- Sidebar -->
+      <aside class="docs-sidebar" aria-label="Documentation navigation">
+        <div class="docs-sidebar-group">
+          <div class="docs-sidebar-group-title">Guides</div>
+          <a href="installation.html" class="docs-sidebar-link active" aria-current="page">Installation</a>
+          <a href="configuration.html" class="docs-sidebar-link">Configuration</a>
+          <a href="privacy.html" class="docs-sidebar-link">Privacy</a>
+          <a href="troubleshooting.html" class="docs-sidebar-link">Troubleshooting</a>
+          <a href="faq.html" class="docs-sidebar-link">FAQ</a>
+        </div>
+        <div class="docs-sidebar-group">
+          <div class="docs-sidebar-group-title">Downloads</div>
+          <a href="../../distribution/CyberWatch-Setup.exe" class="docs-sidebar-link" download="CyberWatch-Setup.exe">CyberWatch-Setup.exe</a>
+          <a href="../downloads/user-guide.html" class="docs-sidebar-link">User Guide</a>
+        </div>
+      </aside>
+
+      <!-- Content -->
+      <article class="docs-content" aria-labelledby="page-title">
+
+        <h1 id="page-title">Installation Guide</h1>
+        <p>This guide walks you through installing CyberWatch on Windows 10 or Windows 11 using the provided installer. No Python or technical knowledge required.</p>
+
+        <div class="docs-callout tip">
+          <strong>Quick summary:</strong> Download the EXE → Generate a Gmail App Password → Run the installer → Enter your email details → Done. CyberWatch starts automatically at every logon.
+        </div>
+
+        <h2 id="prerequisites">Prerequisites</h2>
+        <p>Before running the installer, you need:</p>
+        <ul>
+          <li><strong>Windows 10 or Windows 11</strong> — CyberWatch has been tested on these platforms only.</li>
+          <li><strong>A Gmail account</strong> — for sending email alerts. You must enable 2-Step Verification.</li>
+          <li><strong>A Gmail App Password</strong> — a 16-character code used instead of your regular password. See the section below.</li>
+        </ul>
+
+        <h2 id="step1-app-password">Step 1 — Create a Gmail App Password</h2>
+        <p>CyberWatch sends email notifications using Gmail's SMTP service. Gmail requires a dedicated App Password (separate from your regular login password) for this.</p>
+        <ol>
+          <li>Sign in to your Google Account at <a href="https://myaccount.google.com" target="_blank" rel="noopener noreferrer" style="color:var(--accent);">myaccount.google.com</a></li>
+          <li>Click <strong>Security</strong> in the left navigation.</li>
+          <li>Under "How you sign in to Google", ensure <strong>2-Step Verification</strong> is turned on. If it's off, enable it first.</li>
+          <li>Search for <strong>App passwords</strong> or visit <a href="https://myaccount.google.com/apppasswords" target="_blank" rel="noopener noreferrer" style="color:var(--accent);">myaccount.google.com/apppasswords</a>.</li>
+          <li>Enter an app name such as <code>CyberWatch</code> and click <strong>Create</strong>.</li>
+          <li>Google shows a <strong>16-character code</strong> (e.g. <code>abcd efgh ijkl mnop</code>). Copy this — you'll paste it during installation.</li>
+        </ol>
+
+        <div class="docs-callout danger">
+          <strong>Important:</strong> This App Password grants the ability to send email from your Gmail account. Never share it with anyone. CyberWatch stores it locally on your machine with file-permission protection and never transmits it anywhere except Gmail's SMTP server.
+        </div>
+
+        <h2 id="step2-download">Step 2 — Download CyberWatch</h2>
+        <p>Download <code>CyberWatch-Setup.exe</code> from the website:</p>
+        <ul>
+          <li><a href="../../distribution/CyberWatch-Setup.exe" download="CyberWatch-Setup.exe" style="color:var(--accent);">Download CyberWatch-Setup.exe</a></li>
+        </ul>
+        <p>The installer is approximately 9 MB. It is a standard Windows installer built with Inno Setup 6.</p>
+
+        <h2 id="step3-smartscreen">Step 3 — Windows SmartScreen Warning</h2>
+        <p>When you run <code>CyberWatch-Setup.exe</code>, Windows SmartScreen may display a warning:</p>
+        <blockquote style="border-left: 3px solid var(--border-mid); padding-left: 1rem; margin: 1rem 0; color: var(--text-secondary); font-style: italic;">"Windows protected your PC"</blockquote>
+        <p>This is normal for software distributed without a paid code-signing certificate. CyberWatch is open-source — you can inspect every line of source code on GitHub.</p>
+        <p>To proceed: click <strong>More info</strong>, then click <strong>Run anyway</strong>.</p>
+
+        <h2 id="step4-installer">Step 4 — Run the Installer</h2>
+        <ol>
+          <li>Double-click <code>CyberWatch-Setup.exe</code>.</li>
+          <li>Read the <strong>Information</strong> screen explaining what CyberWatch does and does not do.</li>
+          <li>Click <strong>Next</strong>.</li>
+          <li>Optionally change the installation folder. The default is:
+            <pre><code>%LOCALAPPDATA%\Programs\CyberWatch</code></pre>
+            This is your personal user folder — <strong>no Administrator rights are required</strong>.
+          </li>
+          <li>Click <strong>Next</strong> to proceed to the configuration screen.</li>
+        </ol>
+
+        <h2 id="step5-configure">Step 5 — Configure Email Alerts</h2>
+        <p>On the <strong>Alert &amp; Notification Configuration</strong> screen, fill in:</p>
+        <ul>
+          <li><strong>Notification Recipient Email</strong> — the email address where you want to receive alert messages. This is usually your own email address.</li>
+          <li><strong>SMTP User / Gmail Address</strong> — the Gmail address that will send the alerts. This is your Gmail account (the one you created the App Password for).</li>
+          <li><strong>Gmail App Password</strong> — the 16-character code from Step 1. The characters are masked as you type.</li>
+        </ul>
+        <p>Click <strong>Next</strong>, then click <strong>Install</strong>.</p>
+
+        <h2 id="step6-test">Step 6 — Send a Test Alert</h2>
+        <p>On the final screen, check the box labeled <strong>"Send a test notification email now"</strong>. CyberWatch will immediately attempt to send a test email to your configured address.</p>
+        <p>Check your inbox. If you receive the test email, your configuration is working correctly.</p>
+
+        <div class="docs-callout tip">
+          <strong>Tip:</strong> If the test email doesn't arrive, check your spam folder. If it's still missing, see the <a href="troubleshooting.html" style="color:var(--accent);">Troubleshooting guide</a>.
+        </div>
+
+        <h2 id="step7-active">Step 7 — CyberWatch is Active</h2>
+        <p>CyberWatch is now installed and registered in Windows Task Scheduler. From this point:</p>
+        <ul>
+          <li>CyberWatch starts automatically every time you log in to Windows.</li>
+          <li>You'll receive an email alert when your screen is locked, unlocked, or your system restarts.</li>
+          <li>All events are stored privately in a local SQLite database on your machine.</li>
+        </ul>
+
+        <h2 id="start-menu">Start Menu Shortcuts</h2>
+        <p>After installation, CyberWatch adds shortcuts to your Start Menu under <strong>CyberWatch</strong>:</p>
+        <ul>
+          <li><strong>Configure CyberWatch</strong> — re-open the configuration wizard to update your email or App Password.</li>
+          <li><strong>Test Email Notification</strong> — send a test alert immediately.</li>
+          <li><strong>Check Task Status</strong> — verify the background agent is running.</li>
+          <li><strong>View Logs</strong> — open the event log in Notepad.</li>
+          <li><strong>Uninstall CyberWatch</strong> — remove the application cleanly.</li>
+        </ul>
+
+        <h2 id="uninstall">Uninstalling</h2>
+        <p>To remove CyberWatch:</p>
+        <ol>
+          <li>Go to <strong>Windows Settings → Apps → Installed Apps</strong>.</li>
+          <li>Find <strong>CyberWatch</strong> and click <strong>Uninstall</strong>.</li>
+          <li>Alternatively, use <strong>Start → CyberWatch → Uninstall CyberWatch</strong>.</li>
+        </ol>
+        <p>The uninstaller stops the background agent, removes the Task Scheduler entry, and removes all application files.</p>
+
+        <div style="margin-top: 2.5rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+          <a href="configuration.html" class="btn btn-primary">Configuration Guide →</a>
+          <a href="index.html" class="btn btn-secondary">← All Docs</a>
+        </div>
+
+      </article>
+    </div>
+  </div>
+</main>
+
+<script>
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40);
+  }, { passive: true });
+</script>
+</body>
+</html>
